@@ -113,6 +113,18 @@ R['compress-pdf']=(c)=>{
         File processed locally. Never uploaded to any server.
       </div>
     </div>
+    <div id="cpFileInfo" style="display:none"><div class="tool-panel" style="padding:16px 24px">
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="width:40px;height:40px;border-radius:8px;background:rgba(225,29,72,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#E11D48" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <div style="flex:1;min-width:0">
+          <div id="cpFileName" style="font-weight:600;font-size:0.9375rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis"></div>
+          <div id="cpFileSize" style="font-size:0.75rem;color:var(--on-surface-tertiary,#9CA3AF)"></div>
+        </div>
+        <button onclick="$('cpFileInfo').style.display='none';$('cpResult').style.display='none';$('cpProcessing').style.display='none'" style="background:none;border:none;cursor:pointer;color:var(--on-surface-tertiary,#9CA3AF);font-size:1.25rem;padding:4px">&times;</button>
+      </div>
+    </div></div>
     <div class="tool-panel"><div class="tool-panel-title">Optimization</div>
       <div style="display:flex;gap:8px" id="cpLevel">
         <button class="btn btn-secondary btn-sm" data-val="light" style="flex:1;justify-content:center">Light</button>
@@ -134,6 +146,9 @@ R['compress-pdf']=(c)=>{
   document.querySelectorAll('#cpLevel button').forEach(function(b){b.onclick=function(){document.querySelectorAll('#cpLevel button').forEach(function(x){x.className='btn btn-secondary btn-sm';x.style.flex='1';x.style.justifyContent='center';});b.className='btn btn-primary btn-sm';b.style.flex='1';b.style.justifyContent='center';var descs={light:'Strips metadata only. Minimal change.',standard:'Strips metadata and rebuilds document structure.',heavy:'Aggressive optimization. Strips all non-essential data.'};$('cpLevelDesc').textContent=descs[b.dataset.val];};});
   setupDrop($('cpDrop'),$('cpFile'),async([file])=>{
     if(!file.name.endsWith('.pdf'))return toast('Please select a PDF');
+    $('cpFileName').textContent=file.name;
+    $('cpFileSize').textContent=fmtB(file.size);
+    $('cpFileInfo').style.display='block';
     $('cpProcessing').style.display='block';$('cpResult').style.display='none';
     try{
       const{PDFDocument}=PDFLib;
