@@ -356,14 +356,20 @@ html.dark .cat-panel:hover[data-accent="gen"] { background: rgba(217,119,6,0.12)
 </footer>
 </div>
 <div id="toolView" style="display:none">
-  <div class="container" style="padding-top:calc(var(--nav-h) + 32px);padding-bottom:80px;min-height:100vh">
-    <button onclick="goHome()" style="display:inline-flex;align-items:center;gap:6px;font-size:0.875rem;font-weight:500;color:var(--on-surface-secondary);margin-bottom:24px;padding:8px 0;background:none;border:none;cursor:pointer">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-      Back to Tools
-    </button>
-    <h1 id="toolTitle" style="font-size:1.75rem;font-weight:700;letter-spacing:-0.03em;margin-bottom:8px"></h1>
-    <p id="toolDesc" style="font-size:1rem;color:var(--on-surface-secondary);margin-bottom:32px;max-width:560px"></p>
+  <div style="max-width:720px;margin:0 auto;padding:calc(var(--nav-h) + 24px) 24px 80px;min-height:100vh">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:24px">
+      <button onclick="goHome()" style="display:inline-flex;align-items:center;gap:6px;font-size:0.8125rem;font-weight:500;color:var(--on-surface-tertiary);padding:0;background:none;border:none;cursor:pointer">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Home
+      </button>
+      <span style="color:var(--on-surface-tertiary);font-size:0.75rem">/</span>
+      <span id="toolBreadcrumb" style="font-size:0.8125rem;color:var(--on-surface-tertiary)"></span>
+    </div>
+    <div id="toolCatLabel" style="display:flex;align-items:center;gap:6px;margin-bottom:8px"></div>
+    <h1 id="toolTitle" style="font-size:clamp(1.5rem,3.5vw,2rem);font-weight:700;letter-spacing:-0.03em;margin-bottom:6px"></h1>
+    <p id="toolDesc" style="font-size:0.9375rem;color:var(--on-surface-secondary);margin-bottom:28px;max-width:520px;line-height:1.5"></p>
     <div id="toolBody"></div>
+    <div id="toolRelated" style="margin-top:48px;padding-top:32px;border-top:1px solid var(--ghost-border)"></div>
   </div>
 </div>
 <div id="toolsGrid" style="display:none"></div>
@@ -494,6 +500,8 @@ html.dark #toolView .drop-zone{border-color:rgba(255,255,255,.1)}
 <script>
 (function(){
   var MAP={'Compress PDF':'compress-pdf','Merge PDF':'merge-pdf','Split PDF':'split-pdf','PDF to Image':'image-to-pdf','Image Resizer':'image-resizer','Image Compressor':'image-compressor','WebP Converter':'image-converter','Background Remover':'bg-remover','Color Picker':'color-palette','Word Counter':'word-counter','Case Converter':'case-converter','Lorem Ipsum':'lorem-ipsum','JSON Formatter':'json-formatter','Base64 Encoder':'base64','Password Generator':'password-gen','QR Generator':'qr-generator'};
+  var CAT_NAMES={pdf:'PDF Tools',image:'Image Tools',text:'Text Tools',dev:'Developer Tools',generators:'Generator Tools'};
+  var CAT_COLORS={pdf:'#E11D48',image:'#7C3AED',text:'#059669',dev:'#2563EB',generators:'#D97706'};
   document.querySelectorAll('.tool-card').forEach(function(card){
     card.addEventListener('click',function(){
       var id=MAP[card.dataset.name];
@@ -501,7 +509,28 @@ html.dark #toolView .drop-zone{border-color:rgba(255,255,255,.1)}
     });
   });
   window.goHome=function(){document.getElementById('homepage').style.display='';document.getElementById('toolView').style.display='none';window.scrollTo({top:0,behavior:'smooth'});document.title='iluvtools.online - Free Browser-Based Tools';};
-  window.openTool=function(id){var t=TOOLS.find(function(x){return x.id===id;});if(!t)return;document.getElementById('homepage').style.display='none';document.getElementById('toolView').style.display='';document.getElementById('toolTitle').textContent=t.name;document.getElementById('toolDesc').textContent=t.desc;var body=document.getElementById('toolBody');body.innerHTML='';R[id](body);window.scrollTo({top:0,behavior:'smooth'});document.title=t.name+' | iluvtools.online';};
+  window.openTool=function(id){
+    var t=TOOLS.find(function(x){return x.id===id;});if(!t)return;
+    document.getElementById('homepage').style.display='none';
+    document.getElementById('toolView').style.display='';
+    document.getElementById('toolTitle').textContent=t.name;
+    document.getElementById('toolDesc').textContent=t.desc;
+    // Breadcrumb
+    var catName=CAT_NAMES[t.category]||t.category;
+    document.getElementById('toolBreadcrumb').textContent=catName+' / '+t.name;
+    // Category label
+    var color=CAT_COLORS[t.category]||'#6B7280';
+    document.getElementById('toolCatLabel').innerHTML='<span style="width:7px;height:7px;border-radius:50%;background:'+color+';display:inline-block"></span><span style="font-size:0.6875rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--on-surface-tertiary)">'+catName.replace(' Tools',' Tool')+'</span>';
+    // Related tools
+    var related=TOOLS.filter(function(x){return x.category===t.category&&x.id!==id;}).slice(0,3);
+    var relHtml='<p style="font-size:0.6875rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--on-surface-tertiary);margin-bottom:12px">More '+catName+'</p>';
+    relHtml+=related.map(function(r){return '<a href="#" onclick="event.preventDefault();openTool(\''+r.id+'\')" style="display:inline-flex;align-items:center;gap:4px;font-size:0.875rem;font-weight:500;color:var(--on-surface-secondary);margin-right:24px;transition:color 0.2s" onmouseover="this.style.color=\'var(--on-surface)\'" onmouseout="this.style.color=\'var(--on-surface-secondary)\'">'+r.name+' <span style="font-size:0.75rem">&rarr;</span></a>';}).join('');
+    document.getElementById('toolRelated').innerHTML=relHtml;
+    // Render tool
+    var body=document.getElementById('toolBody');body.innerHTML='';R[id](body);
+    window.scrollTo({top:0,behavior:'smooth'});
+    document.title=t.name+' | iluvtools.online';
+  };
 })();
 </script>
 </body>
