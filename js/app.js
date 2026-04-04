@@ -113,24 +113,16 @@ R['compress-pdf']=(c)=>{
         File processed locally. Never uploaded to any server.
       </div>
     </div>
-    <div class="tool-panel"><div class="tool-panel-title">Optimization Level</div>
-      <div class="slider-wrap"><span style="font-size:12px;color:var(--on-surface-tertiary,#9CA3AF)">Light</span><input type="range" id="cpLevel" min="1" max="3" value="2" step="1"/><span style="font-size:12px;color:var(--on-surface-tertiary,#9CA3AF)">Heavy</span></div>
-      <p style="font-size:12px;color:var(--on-surface-tertiary,#9CA3AF);margin-top:8px" id="cpLevelDesc">Standard: Strips metadata and rebuilds document structure.</p>
-    </div>
     <div id="cpProcessing" style="display:none"><div class="tool-panel" style="text-align:center;padding:40px">
       <div style="font-size:24px;margin-bottom:12px;animation:spin 1s linear infinite;display:inline-block">&#9881;</div>
       <p style="font-weight:600">Optimizing your PDF...</p>
-      <p style="font-size:13px;color:var(--on-surface-tertiary,#9CA3AF)">This runs entirely in your browser</p>
+      <p style="font-size:13px;color:var(--on-surface-tertiary,#9CA3AF)">Stripping metadata and rebuilding structure</p>
     </div></div>
     <div id="cpResult" style="display:none"><div class="tool-panel"><div class="tool-panel-title">Result</div>
       <div class="stats-grid" id="cpStats"></div>
-      <div class="btn-group" style="justify-content:center"><button class="btn btn-primary" id="cpDL">Download Optimized PDF</button></div>
+      <p style="font-size:12px;color:var(--on-surface-tertiary,#9CA3AF);margin-bottom:12px;text-align:center" id="cpNote"></p>
+      <div class="btn-group" style="justify-content:center"><button class="btn btn-primary" id="cpDL">Download Optimized PDF</button><button class="btn btn-secondary" onclick="$('cpResult').style.display='none'">Try Another</button></div>
     </div></div>`;
-  // Level selector
-  let level='standard';
-  const descs={1:'Light: Strips metadata only. Minimal size change.',2:'Standard: Strips metadata and rebuilds document structure.',3:'Heavy: Aggressive optimization. Strips all non-essential data.'};
-  const levels={1:'light',2:'standard',3:'heavy'};
-  $('cpLevel').oninput=function(){level=levels[this.value];$('cpLevelDesc').textContent=descs[this.value];};
   setupDrop($('cpDrop'),$('cpFile'),async([file])=>{
     if(!file.name.endsWith('.pdf'))return toast('Please select a PDF');
     $('cpProcessing').style.display='block';$('cpResult').style.display='none';
@@ -146,10 +138,12 @@ R['compress-pdf']=(c)=>{
       const blob=new Blob([bytes],{type:'application/pdf'});
       const saved=((1-blob.size/file.size)*100).toFixed(1);
       const savedColor=saved>0?'#059669':'#dc2626';
+      const savedKB=Math.abs((file.size-blob.size)/1024).toFixed(0);
       $('cpStats').innerHTML=`
         <div class="stat-card"><div class="stat-val">${fmtB(file.size)}</div><div class="stat-label">Original</div></div>
-        <div class="stat-card"><div class="stat-val">${fmtB(blob.size)}</div><div class="stat-label">Optimized</div></div>
-        <div class="stat-card"><div class="stat-val" style="color:${savedColor}">${saved}%</div><div class="stat-label">Reduced</div></div>`;
+        <div class="stat-card"><div class="stat-val" style="font-size:1.5rem">${fmtB(blob.size)}</div><div class="stat-label">Your file size</div></div>
+        <div class="stat-card"><div class="stat-val" style="color:${savedColor}">${saved>0?'-':'+'} ${savedKB} KB</div><div class="stat-label">${saved>0?saved+'% smaller':'No reduction'}</div></div>`;
+      $('cpNote').textContent=saved>0?'Metadata stripped, document structure rebuilt.':'This PDF is already well-optimized.';
       $('cpDL').onclick=()=>dlBlob(blob,'optimized_'+file.name);
       $('cpProcessing').style.display='none';$('cpResult').style.display='block';
     }catch(e){$('cpProcessing').style.display='none';toast('Error processing PDF');console.error(e);}
