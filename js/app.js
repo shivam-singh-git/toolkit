@@ -294,7 +294,8 @@ R['image-compressor']=(c)=>{
 
 //  BACKGROUND REMOVER 
 R['bg-remover']=(c)=>{
-  c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Upload Image</div><div class="drop-zone" id="brDrop"><input type="file" id="brFile" accept="image/*"/><div class="drop-zone-text"><div style="font-size:32px;margin-bottom:12px;opacity:0.3">&#10024;</div><strong>Click to upload</strong> an image<br><span style="font-size:12px;color:var(--on-surface-tertiary,#9CA3AF)">Works best with solid or simple backgrounds</span></div></div></div>
+  c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Upload Image</div><div class="drop-zone" id="brDrop"><input type="file" id="brFile" accept="image/*"/><div class="drop-zone-text"><div style="font-size:32px;margin-bottom:12px;opacity:0.3">&#10024;</div><strong>Click to upload</strong> an image<br><span style="font-size:12px;color:var(--on-surface-tertiary,#9CA3AF)">Works best with solid or simple backgrounds</span></div></div>
+  <div id="brPreview" style="display:none;margin-top:12px;text-align:center"><img id="brPrevImg" style="max-width:100%;max-height:240px;border-radius:8px;object-fit:contain"/></div></div>
   <div id="brOpt" style="display:none"><div class="tool-panel"><div class="tool-panel-title">Sensitivity</div>
   <div class="slider-wrap"><span style="font-size:12px;color:var(--on-surface-tertiary,#9CA3AF)">Tight</span><input type="range" id="brThr" min="10" max="120" value="50"/><span style="font-size:12px;color:var(--on-surface-tertiary,#9CA3AF)">Wide</span><span class="slider-val" id="brThrV">50</span></div>
   <p style="font-size:12px;color:var(--on-surface-tertiary,#9CA3AF);margin-top:8px">Adjust sensitivity to capture more or less of the background color. Click the image corners to pick background color.</p>
@@ -303,7 +304,7 @@ R['bg-remover']=(c)=>{
   <div class="canvas-preview"><canvas id="brCanvas"></canvas></div>
   <div class="btn-group" style="justify-content:center"><button class="btn btn-primary" id="brDL">Download PNG</button></div></div></div>`;
   let img=null,bgColor=[255,255,255];
-  setupDrop($('brDrop'),$('brFile'),async([f])=>{img=await loadImg(f);$('brOpt').style.display='block';});
+  setupDrop($('brDrop'),$('brFile'),async([f])=>{img=await loadImg(f);$('brPrevImg').src=img.src;$('brPreview').style.display='block';$('brOpt').style.display='block';});
   $('brThr').oninput=e=>$('brThrV').textContent=e.target.value;
   $('brGo').onclick=()=>{
     if(!img)return;const cv=$('brCanvas'),ctx=cv.getContext('2d');cv.width=img.width;cv.height=img.height;ctx.drawImage(img,0,0);
