@@ -451,8 +451,27 @@ html.dark #toolView .drop-zone{border-color:rgba(255,255,255,.1)}
 #toolView .file-list li{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--surface-low);border-radius:var(--radius-sm);margin-bottom:6px;font-size:.875rem}
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--primary);color:var(--primary-text);padding:10px 24px;border-radius:var(--radius-full);font-size:.875rem;font-weight:500;z-index:9999;animation:toastIn .3s ease}
 @keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(12px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+#toolView .toggle-group{display:flex;gap:4px;margin-bottom:8px}
+#toolView .toggle-opt{padding:8px 16px;border-radius:var(--radius-full);font-size:.8125rem;font-weight:500;border:none;cursor:pointer;background:var(--surface-low);color:var(--on-surface-secondary);transition:all .2s}
+#toolView .toggle-opt.active{background:var(--primary);color:var(--primary-text)}
+#toolView .field-label{display:block;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--on-surface-tertiary);margin-bottom:6px}
+#toolView .field-input{width:100%;padding:10px 14px;background:var(--surface-low);border:1px solid transparent;border-radius:var(--radius-sm);font-family:var(--font);font-size:.9375rem;color:var(--on-surface);outline:none}
+#toolView .tool-row{display:flex;gap:16px;flex-wrap:wrap}
+#toolView .tool-col{flex:1;min-width:200px}
+#toolView .slider-wrap{display:flex;align-items:center;gap:12px}
+#toolView .slider-wrap input[type="range"]{flex:1;accent-color:var(--primary)}
+#toolView .slider-val{font-size:.875rem;font-weight:600;min-width:24px;text-align:center}
+#toolView .file-item-drag{cursor:grab;opacity:.3}
+#toolView .file-item-icon{font-size:1.25rem}
+#toolView .file-item-info{flex:1;min-width:0}
+#toolView .file-item-name{font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#toolView .file-item-size{font-size:.75rem;color:var(--on-surface-tertiary)}
+#toolView .file-item-remove{background:none;border:none;cursor:pointer;color:var(--on-surface-tertiary);font-size:1rem;padding:4px}
+#toolView .file-item-remove:hover{color:var(--on-surface)}
 </style>
 <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script src="https://unpkg.com/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
 <script src="js/app.js"></script>
 <script>
 (function(){

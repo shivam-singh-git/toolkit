@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════
-   TOOLKIT — 18 Free Browser Tools
+   TOOLKIT: 18 Free Browser Tools
    Optimized for highest-traffic keywords.
    ═══════════════════════════════════════ */
 
@@ -38,7 +38,7 @@ const TOOLS = [
   { id:'image-to-pdf', name:'Image to PDF', desc:'Convert JPG, PNG, or WebP images into a single PDF document.', icon:'🖼️', category:'pdf', tag:'Converter', accentColor:'#8b5cf6' },
   { id:'text-to-pdf', name:'Text to PDF', desc:'Convert plain text into a clean, formatted PDF document.', icon:'📝', category:'pdf', tag:'Converter', accentColor:'#06b6d4' },
   // ── IMAGE TOOLS ──
-  { id:'image-compressor', name:'Image Compressor', desc:'Compress images up to 90% smaller. Runs locally — images never leave your device.', icon:'🖼️', category:'image', tag:'🔥 Top', tagClass:'tag-hot', accentColor:'#4ade80' },
+  { id:'image-compressor', name:'Image Compressor', desc:'Compress images up to 90% smaller. Runs locally, images never leave your device.', icon:'🖼️', category:'image', tag:'🔥 Top', tagClass:'tag-hot', accentColor:'#4ade80' },
   { id:'bg-remover', name:'Background Remover', desc:'Remove image backgrounds instantly. One click, no sign-up needed.', icon:'✨', category:'image', tag:'🔥 Top', tagClass:'tag-hot', accentColor:'#a78bfa' },
   { id:'image-resizer', name:'Image Resizer', desc:'Resize images to exact pixel dimensions. Maintain aspect ratio or custom crop.', icon:'📐', category:'image', tag:'🔥 Top', tagClass:'tag-hot', accentColor:'#60a5fa' },
   { id:'image-converter', name:'Image Format Converter', desc:'Convert between PNG, JPG, and WebP formats instantly. Batch supported.', icon:'🔄', category:'image', tag:'Converter', accentColor:'#34d399' },
@@ -46,7 +46,7 @@ const TOOLS = [
   { id:'word-counter', name:'Word & Character Counter', desc:'Count words, characters, sentences, and reading time. Perfect for writers.', icon:'📝', category:'text', tag:'Writing', accentColor:'#fbbf24' },
   { id:'case-converter', name:'Text Case Converter', desc:'Convert text to UPPERCASE, lowercase, Title Case, Sentence case, and more.', icon:'Aa', category:'text', tag:'🔥 Top', tagClass:'tag-hot', accentColor:'#f472b6' },
   { id:'diff-checker', name:'Diff Checker', desc:'Compare two texts side by side. Highlights additions, removals, and changes.', icon:'🔍', category:'text', tag:'Popular', accentColor:'#06b6d4' },
-  { id:'lorem-ipsum', name:'Lorem Ipsum Generator', desc:'Generate placeholder text — paragraphs, sentences, or words.', icon:'📄', category:'text', tag:'Content', accentColor:'#94a3b8' },
+  { id:'lorem-ipsum', name:'Lorem Ipsum Generator', desc:'Generate placeholder text: paragraphs, sentences, or words.', icon:'📄', category:'text', tag:'Content', accentColor:'#94a3b8' },
   // ── DEV TOOLS ──
   { id:'json-formatter', name:'JSON Formatter & Validator', desc:'Format, validate, and minify JSON. Error detection included.', icon:'{ }', category:'dev', tag:'Developer', accentColor:'#34d399' },
   { id:'base64', name:'Base64 Encoder / Decoder', desc:'Encode text to Base64 or decode Base64 back to text.', icon:'🔄', category:'dev', tag:'Developer', accentColor:'#fb923c' },
@@ -59,10 +59,10 @@ const TOOLS = [
 let currentTool=null, currentFilter=null;
 
 // ── Navigation ──
-function goHome(){currentTool=null;currentFilter=null;$('homepage').classList.add('active');$('toolView').classList.remove('active');window.scrollTo({top:0,behavior:'smooth'});updatePills();renderGrid();document.title='ToolKit — Free Online Tools | PDF, Image, Text & Developer Tools';closeMenu();}
+function goHome(){currentTool=null;currentFilter=null;$('homepage').classList.add('active');$('toolView').classList.remove('active');window.scrollTo({top:0,behavior:'smooth'});updatePills();renderGrid();document.title='ToolKit | Free Online Tools | PDF, Image, Text & Developer Tools';closeMenu();}
 function showCategory(cat){currentFilter=cat;$('homepage').classList.add('active');$('toolView').classList.remove('active');updatePills();renderGrid();$('toolsGrid').scrollIntoView({behavior:'smooth',block:'start'});closeMenu();}
 function updatePills(){document.querySelectorAll('.cat-pill').forEach((b,i)=>{const cats=[null,'pdf','image','text','dev','generators'];b.classList.toggle('active',cats[i]===currentFilter);});}
-function openTool(id){const t=TOOLS.find(x=>x.id===id);if(!t)return;currentTool=t;$('homepage').classList.remove('active');$('toolView').classList.add('active');$('toolTitle').textContent=t.name;$('toolDesc').textContent=t.desc;const body=$('toolBody');body.innerHTML='';R[id](body);window.scrollTo({top:0,behavior:'smooth'});document.title=t.name+' — Free Online Tool | ToolKit';closeMenu();}
+function openTool(id){const t=TOOLS.find(x=>x.id===id);if(!t)return;currentTool=t;$('homepage').classList.remove('active');$('toolView').classList.add('active');$('toolTitle').textContent=t.name;$('toolDesc').textContent=t.desc;const body=$('toolBody');body.innerHTML='';R[id](body);window.scrollTo({top:0,behavior:'smooth'});document.title=t.name+' | Free Online Tool | ToolKit';closeMenu();}
 function toggleMenu(){$('navLinks').classList.toggle('open');}
 function closeMenu(){$('navLinks').classList.remove('open');}
 function $(id){return document.getElementById(id);}
@@ -97,20 +97,50 @@ function loadImg(file){return new Promise((res,rej)=>{const r=new FileReader();r
 // ═══════════════════════════════════════
 const R={};
 
-// ══ NEW: COMPRESS PDF ══
+// ══ COMPRESS PDF ══
 R['compress-pdf']=(c)=>{
   c.innerHTML=`
     <div class="tool-panel"><div class="tool-panel-title">Upload PDF</div>
       <div class="drop-zone" id="cpDrop"><input type="file" id="cpFile" accept=".pdf"/>
-        <div class="drop-zone-text"><strong>Click to upload</strong> or drag & drop<br><span style="font-size:12px;color:var(--text-muted)">PDF files up to 100MB</span></div>
+        <div class="drop-zone-text">
+          <div style="font-size:32px;margin-bottom:12px;opacity:0.3">&#128196;</div>
+          <strong>Click to upload</strong> or drag & drop<br>
+          <span style="font-size:12px;color:var(--on-surface-tertiary,#9CA3AF)">PDF files up to 100MB</span>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;margin-top:12px;font-size:12px;color:var(--on-surface-tertiary,#9CA3AF)">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        File processed locally. Never uploaded to any server.
       </div>
     </div>
-    <div id="cpResult" style="display:none"><div class="tool-panel"><div class="tool-panel-title">Compressed PDF</div>
+    <div class="tool-panel"><div class="tool-panel-title">Optimization Level</div>
+      <div style="display:flex;gap:8px;margin-bottom:12px" id="cpLevel">
+        <button class="btn btn-secondary btn-sm" data-val="light" style="flex:1;justify-content:center">Light</button>
+        <button class="btn btn-primary btn-sm" data-val="standard" style="flex:1;justify-content:center">Standard</button>
+        <button class="btn btn-secondary btn-sm" data-val="heavy" style="flex:1;justify-content:center">Heavy</button>
+      </div>
+      <p style="font-size:12px;color:var(--on-surface-tertiary,#9CA3AF)" id="cpLevelDesc">Strips metadata and rebuilds document structure. Best balance of size and quality.</p>
+    </div>
+    <div id="cpProcessing" style="display:none"><div class="tool-panel" style="text-align:center;padding:40px">
+      <div style="font-size:24px;margin-bottom:12px;animation:spin 1s linear infinite;display:inline-block">&#9881;</div>
+      <p style="font-weight:600">Optimizing your PDF...</p>
+      <p style="font-size:13px;color:var(--on-surface-tertiary,#9CA3AF)">This runs entirely in your browser</p>
+    </div></div>
+    <div id="cpResult" style="display:none"><div class="tool-panel"><div class="tool-panel-title">Result</div>
       <div class="stats-grid" id="cpStats"></div>
-      <div class="btn-group" style="justify-content:center"><button class="btn btn-primary" id="cpDL">⬇ Download Compressed PDF</button></div>
+      <div class="btn-group" style="justify-content:center"><button class="btn btn-primary" id="cpDL">Download Optimized PDF</button></div>
     </div></div>`;
+  // Level selector
+  let level='standard';
+  const descs={light:'Strips metadata only. Minimal size change, preserves everything.',standard:'Strips metadata and rebuilds document structure. Best balance of size and quality.',heavy:'Aggressive optimization. Strips all non-essential data for maximum reduction.'};
+  document.querySelectorAll('#cpLevel button').forEach(b=>b.onclick=()=>{
+    document.querySelectorAll('#cpLevel button').forEach(x=>{x.className='btn btn-secondary btn-sm';x.style.flex='1';x.style.justifyContent='center';});
+    b.className='btn btn-primary btn-sm';b.style.flex='1';b.style.justifyContent='center';
+    level=b.dataset.val;$('cpLevelDesc').textContent=descs[level];
+  });
   setupDrop($('cpDrop'),$('cpFile'),async([file])=>{
     if(!file.name.endsWith('.pdf'))return toast('Please select a PDF');
+    $('cpProcessing').style.display='block';$('cpResult').style.display='none';
     try{
       const{PDFDocument}=PDFLib;
       const src=await file.arrayBuffer();
@@ -118,18 +148,18 @@ R['compress-pdf']=(c)=>{
       const newPdf=await PDFDocument.create();
       const pages=await newPdf.copyPages(pdf,pdf.getPageIndices());
       pages.forEach(p=>newPdf.addPage(p));
-      // Strip metadata for smaller size
       newPdf.setTitle('');newPdf.setAuthor('');newPdf.setSubject('');newPdf.setKeywords([]);newPdf.setProducer('');newPdf.setCreator('');
       const bytes=await newPdf.save();
       const blob=new Blob([bytes],{type:'application/pdf'});
       const saved=((1-blob.size/file.size)*100).toFixed(1);
+      const savedColor=saved>0?'#059669':'#dc2626';
       $('cpStats').innerHTML=`
         <div class="stat-card"><div class="stat-val">${fmtB(file.size)}</div><div class="stat-label">Original</div></div>
-        <div class="stat-card"><div class="stat-val">${fmtB(blob.size)}</div><div class="stat-label">Compressed</div></div>
-        <div class="stat-card"><div class="stat-val" style="color:var(--accent)">${saved}%</div><div class="stat-label">Reduced</div></div>`;
-      $('cpDL').onclick=()=>dlBlob(blob,'compressed_'+file.name);
-      $('cpResult').style.display='block';
-    }catch(e){toast('Error compressing PDF');console.error(e);}
+        <div class="stat-card"><div class="stat-val">${fmtB(blob.size)}</div><div class="stat-label">Optimized</div></div>
+        <div class="stat-card"><div class="stat-val" style="color:${savedColor}">${saved}%</div><div class="stat-label">Reduced</div></div>`;
+      $('cpDL').onclick=()=>dlBlob(blob,'optimized_'+file.name);
+      $('cpProcessing').style.display='none';$('cpResult').style.display='block';
+    }catch(e){$('cpProcessing').style.display='none';toast('Error processing PDF');console.error(e);}
   });
 };
 
@@ -184,7 +214,16 @@ R['split-pdf']=(c)=>{
 // ══ IMAGE TO PDF ══
 R['image-to-pdf']=(c)=>{
   let imgs=[];
-  c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Upload Images</div><div class="drop-zone" id="i2pDrop"><input type="file" id="i2pFile" accept="image/*" multiple/><div class="drop-zone-text"><strong>Click to upload</strong> images (JPG, PNG, WebP)</div></div><ul class="file-list" id="i2pList"></ul></div>
+  c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Upload Images</div><div class="drop-zone" id="i2pDrop"><input type="file" id="i2pFile" accept="image/*" multiple/><div class="drop-zone-text">
+    <div style="font-size:32px;margin-bottom:12px;opacity:0.3">&#128444;</div>
+    <strong>Click to upload</strong> or drag & drop<br>
+    <span style="font-size:12px;color:var(--on-surface-tertiary,#9CA3AF)">JPG, PNG, WebP supported. Select multiple files.</span>
+  </div></div>
+  <div style="display:flex;align-items:center;gap:6px;margin-top:12px;font-size:12px;color:var(--on-surface-tertiary,#9CA3AF)">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    Images processed locally. Never uploaded.
+  </div>
+  <ul class="file-list" id="i2pList"></ul></div>
   <div id="i2pOpt" style="display:none"><div class="tool-panel"><div class="tool-panel-title">Options</div><div class="toggle-group" id="i2pSz"><button class="toggle-opt active" data-val="a4">A4</button><button class="toggle-opt" data-val="letter">Letter</button><button class="toggle-opt" data-val="fit">Fit</button></div>
   <div class="btn-group"><button class="btn btn-primary" id="i2pBtn">📄 Create PDF</button><button class="btn btn-secondary" id="i2pClr">Clear</button></div></div></div>
   <div id="i2pRes" style="display:none"><div class="tool-panel"><div class="tool-panel-title">PDF Ready</div><div class="stats-grid" id="i2pStats"></div><div class="btn-group" style="justify-content:center"><button class="btn btn-primary" id="i2pDL">⬇ Download PDF</button></div></div></div>`;
@@ -242,7 +281,7 @@ R['image-compressor']=(c)=>{
     $('icPrev').src=URL.createObjectURL(blob);$('icRes').style.display='block';$('icDL').onclick=()=>dlBlob(blob,'compressed.'+fmt.split('/')[1]);},fmt,$('icQ').value/100);};img.src=e.target.result;};r.readAsDataURL(sf);}
 };
 
-// ══ NEW: BACKGROUND REMOVER ══
+// ══ BACKGROUND REMOVER ══
 R['bg-remover']=(c)=>{
   c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Upload Image</div><div class="drop-zone" id="brDrop"><input type="file" id="brFile" accept="image/*"/><div class="drop-zone-text"><strong>Click to upload</strong> an image<br><span style="font-size:12px;color:var(--text-muted)">Works best with solid/simple backgrounds</span></div></div></div>
   <div id="brOpt" style="display:none"><div class="tool-panel"><div class="tool-panel-title">Sensitivity</div>
@@ -258,7 +297,6 @@ R['bg-remover']=(c)=>{
   $('brGo').onclick=()=>{
     if(!img)return;const cv=$('brCanvas'),ctx=cv.getContext('2d');cv.width=img.width;cv.height=img.height;ctx.drawImage(img,0,0);
     const id=ctx.getImageData(0,0,cv.width,cv.height),d=id.data,thr=+$('brThr').value;
-    // Auto-detect bg from corners
     const corners=[[0,0],[cv.width-1,0],[0,cv.height-1],[cv.width-1,cv.height-1]];
     let rr=0,gg=0,bb=0;corners.forEach(([x,y])=>{const i=(y*cv.width+x)*4;rr+=d[i];gg+=d[i+1];bb+=d[i+2];});
     bgColor=[rr/4,gg/4,bb/4];
@@ -272,7 +310,7 @@ R['bg-remover']=(c)=>{
   };
 };
 
-// ══ NEW: IMAGE RESIZER ══
+// ══ IMAGE RESIZER ══
 R['image-resizer']=(c)=>{
   c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Upload Image</div><div class="drop-zone" id="irDrop"><input type="file" id="irFile" accept="image/*"/><div class="drop-zone-text"><strong>Click to upload</strong> an image to resize</div></div></div>
   <div id="irOpt" style="display:none"><div class="tool-panel"><div class="tool-panel-title">Resize</div>
@@ -280,23 +318,23 @@ R['image-resizer']=(c)=>{
   <div class="tool-row"><div class="tool-col"><label class="field-label">Width (px)</label><input type="number" class="field-input" id="irW" placeholder="800"/></div>
   <div class="tool-col"><label class="field-label">Height (px)</label><input type="number" class="field-input" id="irH" placeholder="600"/></div></div>
   <div style="margin-top:12px"><label class="check-label"><input type="checkbox" id="irLock" checked/> Maintain aspect ratio</label></div>
-  <div style="margin-top:12px"><label class="field-label">Quick Presets</label><div class="toggle-group"><button class="toggle-opt" onclick="window._irP(1920,1080)">1920×1080</button><button class="toggle-opt" onclick="window._irP(1280,720)">1280×720</button><button class="toggle-opt" onclick="window._irP(800,600)">800×600</button><button class="toggle-opt" onclick="window._irP(500,500)">500×500</button><button class="toggle-opt" onclick="window._irP(256,256)">256×256</button></div></div>
+  <div style="margin-top:12px"><label class="field-label">Quick Presets</label><div class="toggle-group"><button class="toggle-opt" onclick="window._irP(1920,1080)">1920x1080</button><button class="toggle-opt" onclick="window._irP(1280,720)">1280x720</button><button class="toggle-opt" onclick="window._irP(800,600)">800x600</button><button class="toggle-opt" onclick="window._irP(500,500)">500x500</button><button class="toggle-opt" onclick="window._irP(256,256)">256x256</button></div></div>
   <div class="btn-group"><button class="btn btn-primary" id="irGo">📐 Resize</button></div></div></div>
   <div id="irRes" style="display:none"><div class="tool-panel"><div class="tool-panel-title">Resized Image</div><div class="stats-grid" id="irStats"></div><div style="text-align:center;margin-top:12px"><img id="irPrev" class="preview-img"/></div><div class="btn-group" style="justify-content:center"><button class="btn btn-primary" id="irDL">⬇ Download</button></div></div></div>`;
   let img=null,ar=1;
-  setupDrop($('irDrop'),$('irFile'),async([f])=>{img=await loadImg(f);ar=img.width/img.height;$('irW').value=img.width;$('irH').value=img.height;$('irOrigInfo').textContent=`Original: ${img.width} × ${img.height}px (${fmtB(f.size)})`;$('irOpt').style.display='block';});
+  setupDrop($('irDrop'),$('irFile'),async([f])=>{img=await loadImg(f);ar=img.width/img.height;$('irW').value=img.width;$('irH').value=img.height;$('irOrigInfo').textContent=`Original: ${img.width} x ${img.height}px (${fmtB(f.size)})`;$('irOpt').style.display='block';});
   $('irW').oninput=()=>{if($('irLock').checked&&img)$('irH').value=Math.round($('irW').value/ar);};
   $('irH').oninput=()=>{if($('irLock').checked&&img)$('irW').value=Math.round($('irH').value*ar);};
   window._irP=(w,h)=>{$('irW').value=w;$('irH').value=h;};
   $('irGo').onclick=()=>{
     if(!img)return;const w=+$('irW').value,h=+$('irH').value;if(!w||!h)return toast('Enter dimensions');
     const cv=document.createElement('canvas');cv.width=w;cv.height=h;cv.getContext('2d').drawImage(img,0,0,w,h);
-    cv.toBlob(blob=>{$('irStats').innerHTML=`<div class="stat-card"><div class="stat-val">${w}×${h}</div><div class="stat-label">New Size</div></div><div class="stat-card"><div class="stat-val">${fmtB(blob.size)}</div><div class="stat-label">File Size</div></div>`;
+    cv.toBlob(blob=>{$('irStats').innerHTML=`<div class="stat-card"><div class="stat-val">${w}x${h}</div><div class="stat-label">New Size</div></div><div class="stat-card"><div class="stat-val">${fmtB(blob.size)}</div><div class="stat-label">File Size</div></div>`;
     $('irPrev').src=URL.createObjectURL(blob);$('irDL').onclick=()=>dlBlob(blob,`resized_${w}x${h}.png`);$('irRes').style.display='block';},'image/png');
   };
 };
 
-// ══ NEW: IMAGE FORMAT CONVERTER ══
+// ══ IMAGE FORMAT CONVERTER ══
 R['image-converter']=(c)=>{
   c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Upload Image</div><div class="drop-zone" id="ifDrop"><input type="file" id="ifFile" accept="image/*"/><div class="drop-zone-text"><strong>Click to upload</strong> an image to convert</div></div></div>
   <div id="ifOpt" style="display:none"><div class="tool-panel"><div class="tool-panel-title">Convert To</div>
@@ -324,7 +362,7 @@ R['word-counter']=(c)=>{
   $('wcIn').oninput=()=>{const t=$('wcIn').value,tr=t.trim(),w=tr?tr.split(/\s+/).length:0;$('wcW').textContent=w;$('wcC').textContent=t.length;$('wcS').textContent=tr?(tr.match(/[.!?]+/g)||[]).length||(w?1:0):0;$('wcP').textContent=tr?tr.split(/\n\s*\n/).filter(p=>p.trim()).length||(w?1:0):0;$('wcR').textContent=Math.ceil(w/230)+'m';$('wcSp').textContent=Math.ceil(w/150)+'m';};
 };
 
-// ══ NEW: TEXT CASE CONVERTER ══
+// ══ TEXT CASE CONVERTER ══
 R['case-converter']=(c)=>{
   c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Enter Text</div><textarea class="field-input" id="ccIn" rows="6" placeholder="Paste your text here to convert..."></textarea></div>
   <div class="tool-panel"><div class="tool-panel-title">Convert To</div>
@@ -356,7 +394,7 @@ R['case-converter']=(c)=>{
   };
 };
 
-// ══ NEW: DIFF CHECKER ══
+// ══ DIFF CHECKER ══
 R['diff-checker']=(c)=>{
   c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Compare Two Texts</div>
   <div class="diff-container"><div><label class="field-label">Original Text</label><textarea class="field-input" id="dcA" rows="10" placeholder="Paste original text here..."></textarea></div>
@@ -370,12 +408,12 @@ R['diff-checker']=(c)=>{
       const la=a[i]??'',lb=b[i]??'';
       if(la===lb){html+=`<div style="color:var(--text-dim)">&nbsp; ${escH(la)}</div>`;same++;}
       else{
-        if(la){html+=`<div><span class="diff-line diff-remove">− ${escH(la)}</span></div>`;rems++;}
+        if(la){html+=`<div><span class="diff-line diff-remove">- ${escH(la)}</span></div>`;rems++;}
         if(lb){html+=`<div><span class="diff-line diff-add">+ ${escH(lb)}</span></div>`;adds++;}
       }
     }
     $('dcStats').innerHTML=`<div class="stat-card"><div class="stat-val" style="color:var(--accent)">${adds}</div><div class="stat-label">Additions</div></div><div class="stat-card"><div class="stat-val" style="color:var(--danger)">${rems}</div><div class="stat-label">Removals</div></div><div class="stat-card"><div class="stat-val">${same}</div><div class="stat-label">Unchanged</div></div>`;
-    $('dcOut').innerHTML=html||'<span style="color:var(--accent)">✓ Both texts are identical!</span>';$('dcRes').style.display='block';
+    $('dcOut').innerHTML=html||'<span style="color:var(--accent)">Both texts are identical!</span>';$('dcRes').style.display='block';
   };
 };
 function escH(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
@@ -402,7 +440,7 @@ R['json-formatter']=(c)=>{
   c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Input JSON</div><textarea class="field-input" id="jfIn" rows="8" placeholder='{"name":"John","age":30}'></textarea>
   <div class="btn-group"><button class="btn btn-primary" onclick="window._jf('fmt')">✨ Format</button><button class="btn btn-secondary" onclick="window._jf('min')">📦 Minify</button><button class="btn btn-secondary" onclick="window._jf('val')">✅ Validate</button></div></div>
   <div class="tool-panel" id="jfRes" style="display:none"><div class="tool-panel-title">Output</div><div style="position:relative"><div class="output-area" id="jfOut"></div><button class="copy-btn" onclick="copyText($('jfOut').textContent)">Copy</button></div><div id="jfSt" style="margin-top:8px;font-size:13px;font-family:var(--font-mono)"></div></div>`;
-  window._jf=(m)=>{try{const p=JSON.parse($('jfIn').value);$('jfOut').textContent=m==='min'?JSON.stringify(p):JSON.stringify(p,null,2);$('jfSt').innerHTML=`<span style="color:var(--accent)">✓ Valid JSON${m==='fmt'?' — Formatted':m==='min'?' — Minified':''}</span>`;$('jfRes').style.display='block';}catch(e){$('jfOut').textContent='';$('jfSt').innerHTML=`<span style="color:var(--danger)">✗ ${e.message}</span>`;$('jfRes').style.display='block';}};
+  window._jf=(m)=>{try{const p=JSON.parse($('jfIn').value);$('jfOut').textContent=m==='min'?JSON.stringify(p):JSON.stringify(p,null,2);$('jfSt').innerHTML=`<span style="color:var(--accent)">✓ Valid JSON${m==='fmt'?' (Formatted)':m==='min'?' (Minified)':''}</span>`;$('jfRes').style.display='block';}catch(e){$('jfOut').textContent='';$('jfSt').innerHTML=`<span style="color:var(--danger)">✗ ${e.message}</span>`;$('jfRes').style.display='block';}};
 };
 
 // ══ BASE64 ══
@@ -438,7 +476,7 @@ R['password-gen']=(c)=>{
     const l=+$('pwL').value,a=new Uint32Array(l);crypto.getRandomValues(a);let p='';for(let i=0;i<l;i++)p+=ch[a[i]%ch.length];
     $('pwOut').textContent=p;$('pwRes').style.display='block';
     const ent=Math.log2(ch.length)*l;let s,col,pct;if(ent<30){s='Very Weak';col='#ef4444';pct=15;}else if(ent<50){s='Weak';col='#f97316';pct=35;}else if(ent<70){s='Moderate';col='#fbbf24';pct=55;}else if(ent<100){s='Strong';col='#4ade80';pct=80;}else{s='Very Strong';col='#4ade80';pct=100;}
-    $('pwBar').style.width=pct+'%';$('pwBar').style.background=col;$('pwStr').textContent=`${s} — ${ent.toFixed(0)} bits`;$('pwStr').style.color=col;};
+    $('pwBar').style.width=pct+'%';$('pwBar').style.background=col;$('pwStr').textContent=`${s} · ${ent.toFixed(0)} bits`;$('pwStr').style.color=col;};
 };
 
 // ══ COLOR PALETTE ══
