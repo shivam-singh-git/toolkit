@@ -113,6 +113,14 @@ R['compress-pdf']=(c)=>{
         File processed locally. Never uploaded to any server.
       </div>
     </div>
+    <div class="tool-panel"><div class="tool-panel-title">Optimization</div>
+      <div style="display:flex;gap:8px" id="cpLevel">
+        <button class="btn btn-secondary btn-sm" data-val="light" style="flex:1;justify-content:center">Light</button>
+        <button class="btn btn-primary btn-sm" data-val="standard" style="flex:1;justify-content:center">Standard</button>
+        <button class="btn btn-secondary btn-sm" data-val="heavy" style="flex:1;justify-content:center">Heavy</button>
+      </div>
+      <p style="font-size:12px;color:var(--on-surface-tertiary,#9CA3AF);margin-top:8px" id="cpLevelDesc">Strips metadata and rebuilds document structure.</p>
+    </div>
     <div id="cpProcessing" style="display:none"><div class="tool-panel" style="text-align:center;padding:40px">
       <div style="font-size:24px;margin-bottom:12px;animation:spin 1s linear infinite;display:inline-block">&#9881;</div>
       <p style="font-weight:600">Optimizing your PDF...</p>
@@ -123,6 +131,7 @@ R['compress-pdf']=(c)=>{
       <p style="font-size:12px;color:var(--on-surface-tertiary,#9CA3AF);margin-bottom:12px;text-align:center" id="cpNote"></p>
       <div class="btn-group" style="justify-content:center"><button class="btn btn-primary" id="cpDL">Download Optimized PDF</button><button class="btn btn-secondary" onclick="$('cpResult').style.display='none'">Try Another</button></div>
     </div></div>`;
+  document.querySelectorAll('#cpLevel button').forEach(function(b){b.onclick=function(){document.querySelectorAll('#cpLevel button').forEach(function(x){x.className='btn btn-secondary btn-sm';x.style.flex='1';x.style.justifyContent='center';});b.className='btn btn-primary btn-sm';b.style.flex='1';b.style.justifyContent='center';var descs={light:'Strips metadata only. Minimal change.',standard:'Strips metadata and rebuilds document structure.',heavy:'Aggressive optimization. Strips all non-essential data.'};$('cpLevelDesc').textContent=descs[b.dataset.val];};});
   setupDrop($('cpDrop'),$('cpFile'),async([file])=>{
     if(!file.name.endsWith('.pdf'))return toast('Please select a PDF');
     $('cpProcessing').style.display='block';$('cpResult').style.display='none';
