@@ -194,6 +194,7 @@ html.dark .cat-panel:hover[data-accent="gen"] { background: rgba(217,119,6,0.12)
 </style>
 </head>
 <body>
+<div id="homepage">
 <nav class="nav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
     <a href="/" class="nav-logo">iluvtools.online</a>
@@ -353,6 +354,19 @@ html.dark .cat-panel:hover[data-accent="gen"] { background: rgba(217,119,6,0.12)
     </div>
   </div>
 </footer>
+</div>
+<div id="toolView" style="display:none">
+  <div class="container" style="padding-top:calc(var(--nav-h) + 32px);padding-bottom:80px;min-height:100vh">
+    <button onclick="goHome()" style="display:inline-flex;align-items:center;gap:6px;font-size:0.875rem;font-weight:500;color:var(--on-surface-secondary);margin-bottom:24px;padding:8px 0;background:none;border:none;cursor:pointer">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to Tools
+    </button>
+    <h1 id="toolTitle" style="font-size:1.75rem;font-weight:700;letter-spacing:-0.03em;margin-bottom:8px"></h1>
+    <p id="toolDesc" style="font-size:1rem;color:var(--on-surface-secondary);margin-bottom:32px;max-width:560px"></p>
+    <div id="toolBody"></div>
+  </div>
+</div>
+<div id="toolsGrid" style="display:none"></div>
 <script>
 (function() {
   'use strict';
@@ -406,6 +420,51 @@ html.dark .cat-panel:hover[data-accent="gen"] { background: rgba(217,119,6,0.12)
   var mobileMenu = document.getElementById('mobileMenu');
   hamburger.addEventListener('click', function() { mobileMenu.classList.toggle('open'); });
   mobileMenu.querySelectorAll('a').forEach(function(a) { a.addEventListener('click', function() { mobileMenu.classList.remove('open'); }); });
+})();
+</script>
+<style>
+#toolView .tool-panel{background:var(--surface-card);border-radius:var(--radius-md);padding:28px;margin-bottom:16px;box-shadow:var(--shadow-card)}
+#toolView .tool-panel-title{font-size:.6875rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--on-surface-tertiary);margin-bottom:16px}
+#toolView .drop-zone{border:2px dashed rgba(0,0,0,.1);border-radius:var(--radius-md);padding:48px 24px;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;position:relative}
+html.dark #toolView .drop-zone{border-color:rgba(255,255,255,.1)}
+#toolView .drop-zone:hover,#toolView .drop-zone.dragover{border-color:var(--on-surface-tertiary);background:var(--surface-low)}
+#toolView .drop-zone input[type="file"]{position:absolute;inset:0;opacity:0;cursor:pointer}
+#toolView .drop-zone-text{color:var(--on-surface-secondary);font-size:.9375rem}
+#toolView .drop-zone-text strong{color:var(--on-surface)}
+#toolView .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:var(--radius-full);font-size:.875rem;font-weight:600;cursor:pointer;border:none;transition:transform .15s,box-shadow .15s}
+#toolView .btn-primary{background:var(--primary);color:var(--primary-text)}
+#toolView .btn-primary:hover{transform:scale(1.02);box-shadow:0 4px 12px rgba(0,0,0,.12)}
+#toolView .btn-secondary{background:var(--surface-low);color:var(--on-surface)}
+#toolView .btn-sm{padding:6px 14px;font-size:.8125rem}
+#toolView .btn-group{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+#toolView .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+#toolView .stat-card{background:var(--surface-low);border-radius:var(--radius-sm);padding:16px;text-align:center}
+#toolView .stat-val{font-size:1.25rem;font-weight:700;color:var(--on-surface);margin-bottom:4px}
+#toolView .stat-label{font-size:.75rem;color:var(--on-surface-tertiary);text-transform:uppercase;letter-spacing:.05em}
+#toolView textarea,#toolView input[type="text"],#toolView input[type="number"],#toolView select{width:100%;padding:10px 14px;background:var(--surface-low);border:1px solid transparent;border-radius:var(--radius-sm);font-family:var(--font);font-size:.9375rem;color:var(--on-surface);outline:none;transition:border-color .2s}
+#toolView textarea:focus,#toolView input[type="text"]:focus{border-color:var(--on-surface-tertiary)}
+#toolView textarea{min-height:160px;resize:vertical}
+#toolView .palette-display{display:flex;border-radius:var(--radius-sm);overflow:hidden;height:120px;margin-bottom:16px}
+#toolView .palette-swatch{flex:1;cursor:pointer;display:flex;align-items:flex-end;justify-content:center;padding-bottom:8px}
+#toolView .palette-swatch span{font-size:.6875rem;background:rgba(0,0,0,.4);color:#fff;padding:2px 6px;border-radius:4px}
+#toolView .file-list{list-style:none;margin:12px 0}
+#toolView .file-list li{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--surface-low);border-radius:var(--radius-sm);margin-bottom:6px;font-size:.875rem}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--primary);color:var(--primary-text);padding:10px 24px;border-radius:var(--radius-full);font-size:.875rem;font-weight:500;z-index:9999;animation:toastIn .3s ease}
+@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(12px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+</style>
+<script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script src="js/app.js"></script>
+<script>
+(function(){
+  var MAP={'Compress PDF':'compress-pdf','Merge PDF':'merge-pdf','Split PDF':'split-pdf','PDF to Image':'image-to-pdf','Image Resizer':'image-resizer','Image Compressor':'image-compressor','WebP Converter':'image-converter','Background Remover':'bg-remover','Color Picker':'color-palette','Word Counter':'word-counter','Case Converter':'case-converter','Lorem Ipsum':'lorem-ipsum','JSON Formatter':'json-formatter','Base64 Encoder':'base64','Password Generator':'password-gen','QR Generator':'qr-generator'};
+  document.querySelectorAll('.tool-card').forEach(function(card){
+    card.addEventListener('click',function(){
+      var id=MAP[card.dataset.name];
+      if(id&&typeof R!=='undefined'&&R[id]){openTool(id);}else{toast(card.dataset.name+' coming soon!');}
+    });
+  });
+  window.goHome=function(){document.getElementById('homepage').style.display='';document.getElementById('toolView').style.display='none';window.scrollTo({top:0,behavior:'smooth'});document.title='iluvtools.online - Free Browser-Based Tools';};
+  window.openTool=function(id){var t=TOOLS.find(function(x){return x.id===id;});if(!t)return;document.getElementById('homepage').style.display='none';document.getElementById('toolView').style.display='';document.getElementById('toolTitle').textContent=t.name;document.getElementById('toolDesc').textContent=t.desc;var body=document.getElementById('toolBody');body.innerHTML='';R[id](body);window.scrollTo({top:0,behavior:'smooth'});document.title=t.name+' | iluvtools.online';};
 })();
 </script>
 </body>
