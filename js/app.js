@@ -1,9 +1,9 @@
-﻿/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+/* 
    TOOLKIT: 18 Free Browser Tools
    Optimized for highest-traffic keywords.
-   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+    */
 
-// â”€â”€ Theme Toggle â”€â”€
+//  Theme Toggle 
 function toggleTheme() {
   const html = document.documentElement;
   const current = html.getAttribute('data-theme');
@@ -20,7 +20,7 @@ function toggleTheme() {
 
 function updateThemeIcons() {
   const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-  const icon = isDark ? 'â˜€ï¸' : 'ðŸŒ™';
+  const icon = isDark ? '' : '';
   const btn1 = document.getElementById('themeToggle');
   const btn2 = document.getElementById('themeToggleMobile');
   if (btn1) btn1.textContent = icon;
@@ -31,34 +31,34 @@ function updateThemeIcons() {
 document.addEventListener('DOMContentLoaded', updateThemeIcons);
 
 const TOOLS = [
-  // â”€â”€ PDF TOOLS â”€â”€
-  { id:'compress-pdf', name:'Compress PDF', desc:'Reduce PDF file size by up to 80%. Fast, free, and 100% private.', icon:'ðŸ“¦', category:'pdf', tag:'ðŸ”¥ Top', tagClass:'tag-hot', accentColor:'#ef4444' },
-  { id:'merge-pdf', name:'Merge PDF', desc:'Combine multiple PDF files into a single document. Drag to reorder.', icon:'ðŸ“‘', category:'pdf', tag:'Popular', accentColor:'#f97316' },
-  { id:'split-pdf', name:'Split / Extract PDF', desc:'Extract specific pages from a PDF. Choose page ranges or individual pages.', icon:'âœ‚ï¸', category:'pdf', tag:'Popular', accentColor:'#f97316' },
-  { id:'image-to-pdf', name:'Image to PDF', desc:'Convert JPG, PNG, or WebP images into a single PDF document.', icon:'ðŸ–¼ï¸', category:'pdf', tag:'Converter', accentColor:'#8b5cf6' },
-  { id:'text-to-pdf', name:'Text to PDF', desc:'Convert plain text into a clean, formatted PDF document.', icon:'ðŸ“', category:'pdf', tag:'Converter', accentColor:'#06b6d4' },
-  // â”€â”€ IMAGE TOOLS â”€â”€
-  { id:'image-compressor', name:'Image Compressor', desc:'Compress images up to 90% smaller. Runs locally, images never leave your device.', icon:'ðŸ–¼ï¸', category:'image', tag:'ðŸ”¥ Top', tagClass:'tag-hot', accentColor:'#4ade80' },
-  { id:'bg-remover', name:'Background Remover', desc:'Remove image backgrounds instantly. One click, no sign-up needed.', icon:'âœ¨', category:'image', tag:'ðŸ”¥ Top', tagClass:'tag-hot', accentColor:'#a78bfa' },
-  { id:'image-resizer', name:'Image Resizer', desc:'Resize images to exact pixel dimensions. Maintain aspect ratio or custom crop.', icon:'ðŸ“', category:'image', tag:'ðŸ”¥ Top', tagClass:'tag-hot', accentColor:'#60a5fa' },
-  { id:'image-converter', name:'Image Format Converter', desc:'Convert between PNG, JPG, and WebP formats instantly. Batch supported.', icon:'ðŸ”„', category:'image', tag:'Converter', accentColor:'#34d399' },
-  // â”€â”€ TEXT TOOLS â”€â”€
-  { id:'word-counter', name:'Word & Character Counter', desc:'Count words, characters, sentences, and reading time. Perfect for writers.', icon:'ðŸ“', category:'text', tag:'Writing', accentColor:'#fbbf24' },
-  { id:'case-converter', name:'Text Case Converter', desc:'Convert text to UPPERCASE, lowercase, Title Case, Sentence case, and more.', icon:'Aa', category:'text', tag:'ðŸ”¥ Top', tagClass:'tag-hot', accentColor:'#f472b6' },
-  { id:'diff-checker', name:'Diff Checker', desc:'Compare two texts side by side. Highlights additions, removals, and changes.', icon:'ðŸ”', category:'text', tag:'Popular', accentColor:'#06b6d4' },
-  { id:'lorem-ipsum', name:'Lorem Ipsum Generator', desc:'Generate placeholder text: paragraphs, sentences, or words.', icon:'ðŸ“„', category:'text', tag:'Content', accentColor:'#94a3b8' },
-  // â”€â”€ DEV TOOLS â”€â”€
+  //  PDF TOOLS 
+  { id:'compress-pdf', name:'Compress PDF', desc:'Reduce PDF file size by up to 80%. Fast, free, and 100% private.', icon:'', category:'pdf', tag:' Top', tagClass:'tag-hot', accentColor:'#ef4444' },
+  { id:'merge-pdf', name:'Merge PDF', desc:'Combine multiple PDF files into a single document. Drag to reorder.', icon:'', category:'pdf', tag:'Popular', accentColor:'#f97316' },
+  { id:'split-pdf', name:'Split / Extract PDF', desc:'Extract specific pages from a PDF. Choose page ranges or individual pages.', icon:'', category:'pdf', tag:'Popular', accentColor:'#f97316' },
+  { id:'image-to-pdf', name:'Image to PDF', desc:'Convert JPG, PNG, or WebP images into a single PDF document.', icon:'', category:'pdf', tag:'Converter', accentColor:'#8b5cf6' },
+  { id:'text-to-pdf', name:'Text to PDF', desc:'Convert plain text into a clean, formatted PDF document.', icon:'', category:'pdf', tag:'Converter', accentColor:'#06b6d4' },
+  //  IMAGE TOOLS 
+  { id:'image-compressor', name:'Image Compressor', desc:'Compress images up to 90% smaller. Runs locally, images never leave your device.', icon:'', category:'image', tag:' Top', tagClass:'tag-hot', accentColor:'#4ade80' },
+  { id:'bg-remover', name:'Background Remover', desc:'Remove image backgrounds instantly. One click, no sign-up needed.', icon:'', category:'image', tag:' Top', tagClass:'tag-hot', accentColor:'#a78bfa' },
+  { id:'image-resizer', name:'Image Resizer', desc:'Resize images to exact pixel dimensions. Maintain aspect ratio or custom crop.', icon:'', category:'image', tag:' Top', tagClass:'tag-hot', accentColor:'#60a5fa' },
+  { id:'image-converter', name:'Image Format Converter', desc:'Convert between PNG, JPG, and WebP formats instantly. Batch supported.', icon:'', category:'image', tag:'Converter', accentColor:'#34d399' },
+  //  TEXT TOOLS 
+  { id:'word-counter', name:'Word & Character Counter', desc:'Count words, characters, sentences, and reading time. Perfect for writers.', icon:'', category:'text', tag:'Writing', accentColor:'#fbbf24' },
+  { id:'case-converter', name:'Text Case Converter', desc:'Convert text to UPPERCASE, lowercase, Title Case, Sentence case, and more.', icon:'Aa', category:'text', tag:' Top', tagClass:'tag-hot', accentColor:'#f472b6' },
+  { id:'diff-checker', name:'Diff Checker', desc:'Compare two texts side by side. Highlights additions, removals, and changes.', icon:'', category:'text', tag:'Popular', accentColor:'#06b6d4' },
+  { id:'lorem-ipsum', name:'Lorem Ipsum Generator', desc:'Generate placeholder text: paragraphs, sentences, or words.', icon:'', category:'text', tag:'Content', accentColor:'#94a3b8' },
+  //  DEV TOOLS 
   { id:'json-formatter', name:'JSON Formatter & Validator', desc:'Format, validate, and minify JSON. Error detection included.', icon:'{ }', category:'dev', tag:'Developer', accentColor:'#34d399' },
-  { id:'base64', name:'Base64 Encoder / Decoder', desc:'Encode text to Base64 or decode Base64 back to text.', icon:'ðŸ”„', category:'dev', tag:'Developer', accentColor:'#fb923c' },
-  // â”€â”€ GENERATORS â”€â”€
-  { id:'qr-generator', name:'QR Code Generator', desc:'Generate QR codes for URLs, text, WiFi, and more.', icon:'ðŸ“±', category:'generators', tag:'Instant', accentColor:'#60a5fa' },
-  { id:'password-gen', name:'Password Generator', desc:'Create strong, unbreakable passwords with entropy scoring.', icon:'ðŸ”', category:'generators', tag:'Security', accentColor:'#a78bfa' },
-  { id:'color-palette', name:'Color Palette Generator', desc:'Generate beautiful color palettes. Warm, cool, pastel, and mono modes.', icon:'ðŸŽ¨', category:'generators', tag:'Design', accentColor:'#f472b6' },
+  { id:'base64', name:'Base64 Encoder / Decoder', desc:'Encode text to Base64 or decode Base64 back to text.', icon:'', category:'dev', tag:'Developer', accentColor:'#fb923c' },
+  //  GENERATORS 
+  { id:'qr-generator', name:'QR Code Generator', desc:'Generate QR codes for URLs, text, WiFi, and more.', icon:'', category:'generators', tag:'Instant', accentColor:'#60a5fa' },
+  { id:'password-gen', name:'Password Generator', desc:'Create strong, unbreakable passwords with entropy scoring.', icon:'', category:'generators', tag:'Security', accentColor:'#a78bfa' },
+  { id:'color-palette', name:'Color Palette Generator', desc:'Generate beautiful color palettes. Warm, cool, pastel, and mono modes.', icon:'', category:'generators', tag:'Design', accentColor:'#f472b6' },
 ];
 
 let currentTool=null, currentFilter=null;
 
-// â”€â”€ Navigation â”€â”€
+//  Navigation 
 function goHome(){currentTool=null;currentFilter=null;$('homepage').classList.add('active');$('toolView').classList.remove('active');window.scrollTo({top:0,behavior:'smooth'});updatePills();renderGrid();document.title='ToolKit | Free Online Tools | PDF, Image, Text & Developer Tools';closeMenu();}
 function showCategory(cat){currentFilter=cat;$('homepage').classList.add('active');$('toolView').classList.remove('active');updatePills();renderGrid();$('toolsGrid').scrollIntoView({behavior:'smooth',block:'start'});closeMenu();}
 function updatePills(){document.querySelectorAll('.cat-pill').forEach((b,i)=>{const cats=[null,'pdf','image','text','dev','generators'];b.classList.toggle('active',cats[i]===currentFilter);});}
@@ -78,7 +78,7 @@ function renderGrid(){
     </div>`).join('');
 }
 
-// â”€â”€ Utilities â”€â”€
+//  Utilities 
 function toast(m){const t=document.createElement('div');t.className='toast';t.textContent=m;document.body.appendChild(t);setTimeout(()=>t.remove(),2200);}
 function copyText(t){navigator.clipboard.writeText(t).then(()=>toast('Copied!'));}
 function dlBlob(b,n){const u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=n;a.click();URL.revokeObjectURL(u);}
@@ -92,12 +92,12 @@ function setupDrop(drop,inp,cb){
 }
 function loadImg(file){return new Promise((res,rej)=>{const r=new FileReader();r.onload=e=>{const img=new Image();img.onload=()=>res(img);img.onerror=rej;img.src=e.target.result;};r.onerror=rej;r.readAsDataURL(file);});}
 
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// 
 // RENDERERS
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// 
 const R={};
 
-// â•â• COMPRESS PDF â•â•
+//  COMPRESS PDF 
 R['compress-pdf']=(c)=>{
   c.innerHTML=`
     <div class="tool-panel"><div class="tool-panel-title">Upload PDF</div>
@@ -174,16 +174,16 @@ R['compress-pdf']=(c)=>{
   });
 };
 
-// â•â• MERGE PDF â•â•
+//  MERGE PDF 
 R['merge-pdf']=(c)=>{
   let files=[];
   c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Upload PDF Files</div>
     <div class="drop-zone" id="mDrop"><input type="file" id="mFile" accept=".pdf" multiple/><div class="drop-zone-text"><div style="font-size:32px;margin-bottom:12px;opacity:0.3">&#128209;</div><strong>Click to upload</strong> or drag & drop<br><span style="font-size:12px;color:var(--on-surface-tertiary,#9CA3AF)">Select multiple PDF files to merge</span></div></div>
     <ul class="file-list" id="mList"></ul>
-    <div class="btn-group"><button class="btn btn-primary" id="mBtn" disabled>ðŸ“‘ Merge PDFs</button><button class="btn btn-secondary" id="mClr" style="display:none">Clear All</button></div>
-  </div><div id="mRes" style="display:none"><div class="tool-panel"><div class="tool-panel-title">Merged PDF</div><div class="stats-grid" id="mStats"></div><div class="btn-group" style="justify-content:center"><button class="btn btn-primary" id="mDL">â¬‡ Download</button></div></div></div>`;
+    <div class="btn-group"><button class="btn btn-primary" id="mBtn" disabled>Merge PDFs</button><button class="btn btn-secondary" id="mClr" style="display:none">Clear All</button></div>
+  </div><div id="mRes" style="display:none"><div class="tool-panel"><div class="tool-panel-title">Merged PDF</div><div class="stats-grid" id="mStats"></div><div class="btn-group" style="justify-content:center"><button class="btn btn-primary" id="mDL">Download</button></div></div></div>`;
   setupDrop($('mDrop'),$('mFile'),nf=>{files.push(...nf.filter(f=>f.name.endsWith('.pdf')));rl();});
-  function rl(){$('mList').innerHTML=files.map((f,i)=>`<li class="file-item"><span class="file-item-drag">â ¿</span><span class="file-item-icon">ðŸ“„</span><div class="file-item-info"><div class="file-item-name">${f.name}</div><div class="file-item-size">${fmtB(f.size)}</div></div><button class="file-item-remove" onclick="this.closest('li').remove();window._mfiles.splice(${i},1)">âœ•</button></li>`).join('');$('mBtn').disabled=files.length<2;$('mClr').style.display=files.length?'inline-flex':'none';}
+  function rl(){$('mList').innerHTML=files.map((f,i)=>`<li class="file-item"><span class="file-item-drag"></span><span class="file-item-icon"></span><div class="file-item-info"><div class="file-item-name">${f.name}</div><div class="file-item-size">${fmtB(f.size)}</div></div><button class="file-item-remove" onclick="this.closest('li').remove();window._mfiles.splice(${i},1)"></button></li>`).join('');$('mBtn').disabled=files.length<2;$('mClr').style.display=files.length?'inline-flex':'none';}
   window._mfiles=files;
   $('mClr').onclick=()=>{files=[];window._mfiles=files;rl();$('mRes').style.display='none';};
   $('mBtn').onclick=async()=>{
@@ -195,7 +195,7 @@ R['merge-pdf']=(c)=>{
   };
 };
 
-// â•â• SPLIT PDF â•â•
+//  SPLIT PDF 
 R['split-pdf']=(c)=>{
   let lb=null;
   c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Upload PDF</div><div class="drop-zone" id="sDrop"><input type="file" id="sFile" accept=".pdf"/><div class="drop-zone-text"><div style="font-size:32px;margin-bottom:12px;opacity:0.3">&#9986;</div><strong>Click to upload</strong> a PDF to split</div></div><div id="sInfo" style="display:none;margin-top:12px"><div class="stats-grid" id="sStats"></div></div></div>
@@ -212,17 +212,17 @@ R['split-pdf']=(c)=>{
     if(!pages.length)return toast('No valid pages');
     const np=await PDFDocument.create();const cp=await np.copyPages(await PDFDocument.load(lb),pages.map(p=>p-1));cp.forEach(p=>np.addPage(p));
     const b=new Blob([await np.save()],{type:'application/pdf'});
-    $('sDLs').innerHTML='';const btn=document.createElement('button');btn.className='btn btn-primary';btn.textContent='â¬‡ Download';btn.onclick=()=>dlBlob(b,'extracted.pdf');$('sDLs').appendChild(btn);$('sRes').style.display='block';
+    $('sDLs').innerHTML='';const btn=document.createElement('button');btn.className='btn btn-primary';btn.textContent='Download';btn.onclick=()=>dlBlob(b,'extracted.pdf');$('sDLs').appendChild(btn);$('sRes').style.display='block';
   };
   $('sAll').onclick=async()=>{
     const{PDFDocument}=PDFLib;const pdf=await PDFDocument.load(lb);const pc=pdf.getPageCount();$('sDLs').innerHTML='';
     for(let i=0;i<pc;i++){const np=await PDFDocument.create();const[p]=await np.copyPages(await PDFDocument.load(lb),[i]);np.addPage(p);const b=new Blob([await np.save()],{type:'application/pdf'});
-      const btn=document.createElement('button');btn.className='btn btn-secondary btn-sm';btn.textContent=`â¬‡ Page ${i+1}`;btn.onclick=()=>dlBlob(b,`page_${i+1}.pdf`);$('sDLs').appendChild(btn);}
+      const btn=document.createElement('button');btn.className='btn btn-secondary btn-sm';btn.textContent=` Page ${i+1}`;btn.onclick=()=>dlBlob(b,`page_${i+1}.pdf`);$('sDLs').appendChild(btn);}
     $('sRes').style.display='block';
   };
 };
 
-// â•â• IMAGE TO PDF â•â•
+//  IMAGE TO PDF 
 R['image-to-pdf']=(c)=>{
   let imgs=[];
   c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Upload Images</div><div class="drop-zone" id="i2pDrop"><input type="file" id="i2pFile" accept="image/*" multiple/><div class="drop-zone-text">
@@ -236,12 +236,12 @@ R['image-to-pdf']=(c)=>{
   </div>
   <ul class="file-list" id="i2pList"></ul></div>
   <div id="i2pOpt" style="display:none"><div class="tool-panel"><div class="tool-panel-title">Options</div><div class="toggle-group" id="i2pSz"><button class="toggle-opt active" data-val="a4">A4</button><button class="toggle-opt" data-val="letter">Letter</button><button class="toggle-opt" data-val="fit">Fit</button></div>
-  <div class="btn-group"><button class="btn btn-primary" id="i2pBtn">ðŸ“„ Create PDF</button><button class="btn btn-secondary" id="i2pClr">Clear</button></div></div></div>
-  <div id="i2pRes" style="display:none"><div class="tool-panel"><div class="tool-panel-title">PDF Ready</div><div class="stats-grid" id="i2pStats"></div><div class="btn-group" style="justify-content:center"><button class="btn btn-primary" id="i2pDL">â¬‡ Download PDF</button></div></div></div>`;
+  <div class="btn-group"><button class="btn btn-primary" id="i2pBtn">Create PDF</button><button class="btn btn-secondary" id="i2pClr">Clear</button></div></div></div>
+  <div id="i2pRes" style="display:none"><div class="tool-panel"><div class="tool-panel-title">PDF Ready</div><div class="stats-grid" id="i2pStats"></div><div class="btn-group" style="justify-content:center"><button class="btn btn-primary" id="i2pDL">Download PDF</button></div></div></div>`;
   let ps='a4';
   document.querySelectorAll('#i2pSz .toggle-opt').forEach(b=>b.onclick=()=>{document.querySelectorAll('#i2pSz .toggle-opt').forEach(x=>x.classList.remove('active'));b.classList.add('active');ps=b.dataset.val;});
   setupDrop($('i2pDrop'),$('i2pFile'),nf=>{imgs.push(...nf.filter(f=>f.type.startsWith('image/')));rl();});
-  function rl(){$('i2pList').innerHTML=imgs.map((f,i)=>`<li class="file-item"><span class="file-item-icon">ðŸ–¼ï¸</span><div class="file-item-info"><div class="file-item-name">${f.name}</div><div class="file-item-size">${fmtB(f.size)}</div></div><button class="file-item-remove" onclick="window._i2pRm(${i})">âœ•</button></li>`).join('');$('i2pOpt').style.display=imgs.length?'block':'none';}
+  function rl(){$('i2pList').innerHTML=imgs.map((f,i)=>`<li class="file-item"><span class="file-item-icon"></span><div class="file-item-info"><div class="file-item-name">${f.name}</div><div class="file-item-size">${fmtB(f.size)}</div></div><button class="file-item-remove" onclick="window._i2pRm(${i})"></button></li>`).join('');$('i2pOpt').style.display=imgs.length?'block':'none';}
   window._i2pRm=i=>{imgs.splice(i,1);rl();};
   $('i2pClr').onclick=()=>{imgs=[];rl();$('i2pRes').style.display='none';};
   $('i2pBtn').onclick=async()=>{
@@ -257,12 +257,12 @@ R['image-to-pdf']=(c)=>{
   };
 };
 
-// â•â• TEXT TO PDF â•â•
+//  TEXT TO PDF 
 R['text-to-pdf']=(c)=>{
   c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Enter Text</div><textarea class="field-input" id="t2pIn" rows="10" style="font-family:inherit" placeholder="Type or paste text here..."></textarea></div>
   <div class="tool-panel"><div class="tool-panel-title">Options</div><div class="tool-row"><div class="tool-col"><label class="field-label">Title (optional)</label><input type="text" class="field-input" id="t2pTitle" placeholder="Document Title"/></div><div class="tool-col" style="max-width:150px"><label class="field-label">Font Size</label><div class="slider-wrap"><input type="range" id="t2pSz" min="8" max="24" value="12"/><span class="slider-val" id="t2pSzV">12</span></div></div></div>
-  <div class="btn-group"><button class="btn btn-primary" onclick="window._t2p()">ðŸ“„ Generate PDF</button></div></div>
-  <div id="t2pRes" style="display:none"><div class="tool-panel"><div class="tool-panel-title">PDF Ready</div><div class="stats-grid" id="t2pStats"></div><div class="btn-group" style="justify-content:center"><button class="btn btn-primary" id="t2pDL">â¬‡ Download</button></div></div></div>`;
+  <div class="btn-group"><button class="btn btn-primary" onclick="window._t2p()">Generate PDF</button></div></div>
+  <div id="t2pRes" style="display:none"><div class="tool-panel"><div class="tool-panel-title">PDF Ready</div><div class="stats-grid" id="t2pStats"></div><div class="btn-group" style="justify-content:center"><button class="btn btn-primary" id="t2pDL">Download</button></div></div></div>`;
   $('t2pSz').oninput=e=>$('t2pSzV').textContent=e.target.value;
   window._t2p=()=>{
     const txt=$('t2pIn').value.trim();if(!txt)return toast('Enter some text');
@@ -277,12 +277,12 @@ R['text-to-pdf']=(c)=>{
   };
 };
 
-// â•â• IMAGE COMPRESSOR â•â•
+//  IMAGE COMPRESSOR 
 R['image-compressor']=(c)=>{
   c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Upload Image</div><div class="drop-zone" id="icDrop"><input type="file" id="icFile" accept="image/*"/><div class="drop-zone-text"><div style="font-size:32px;margin-bottom:12px;opacity:0.3">&#128247;</div><strong>Click to upload</strong> or drag & drop<br><span style="font-size:12px;color:var(--on-surface-tertiary,#9CA3AF)">JPG, PNG, WebP supported</span></div></div></div>
   <div class="tool-panel"><div class="tool-panel-title">Quality</div><div class="slider-wrap"><input type="range" id="icQ" min="10" max="100" value="70"/><span class="slider-val" id="icQV">70%</span></div>
   <div style="margin-top:12px"><label class="field-label">Format</label><div class="toggle-group" id="icFmt"><button class="toggle-opt active" data-val="image/jpeg">JPEG</button><button class="toggle-opt" data-val="image/webp">WebP</button><button class="toggle-opt" data-val="image/png">PNG</button></div></div></div>
-  <div id="icRes" style="display:none"><div class="tool-panel"><div class="tool-panel-title">Result</div><div class="stats-grid" id="icStats"></div><div style="text-align:center;margin-top:16px"><img id="icPrev" class="preview-img"/></div><div class="btn-group" style="justify-content:center"><button class="btn btn-primary" id="icDL">â¬‡ Download</button></div></div></div>`;
+  <div id="icRes" style="display:none"><div class="tool-panel"><div class="tool-panel-title">Result</div><div class="stats-grid" id="icStats"></div><div style="text-align:center;margin-top:16px"><img id="icPrev" class="preview-img"/></div><div class="btn-group" style="justify-content:center"><button class="btn btn-primary" id="icDL">Download</button></div></div></div>`;
   let sf=null,fmt='image/jpeg';
   document.querySelectorAll('#icFmt .toggle-opt').forEach(b=>b.onclick=()=>{document.querySelectorAll('#icFmt .toggle-opt').forEach(x=>x.classList.remove('active'));b.classList.add('active');fmt=b.dataset.val;if(sf)comp();});
   $('icQ').oninput=()=>{$('icQV').textContent=$('icQ').value+'%';if(sf)comp();};
@@ -292,16 +292,16 @@ R['image-compressor']=(c)=>{
     $('icPrev').src=URL.createObjectURL(blob);$('icRes').style.display='block';$('icDL').onclick=()=>dlBlob(blob,'compressed.'+fmt.split('/')[1]);},fmt,$('icQ').value/100);};img.src=e.target.result;};r.readAsDataURL(sf);}
 };
 
-// â•â• BACKGROUND REMOVER â•â•
+//  BACKGROUND REMOVER 
 R['bg-remover']=(c)=>{
   c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Upload Image</div><div class="drop-zone" id="brDrop"><input type="file" id="brFile" accept="image/*"/><div class="drop-zone-text"><div style="font-size:32px;margin-bottom:12px;opacity:0.3">&#10024;</div><strong>Click to upload</strong> an image<br><span style="font-size:12px;color:var(--on-surface-tertiary,#9CA3AF)">Works best with solid or simple backgrounds</span></div></div></div>
   <div id="brOpt" style="display:none"><div class="tool-panel"><div class="tool-panel-title">Sensitivity</div>
   <div class="slider-wrap"><span style="font-size:12px;color:var(--on-surface-tertiary,#9CA3AF)">Tight</span><input type="range" id="brThr" min="10" max="120" value="50"/><span style="font-size:12px;color:var(--on-surface-tertiary,#9CA3AF)">Wide</span><span class="slider-val" id="brThrV">50</span></div>
   <p style="font-size:12px;color:var(--on-surface-tertiary,#9CA3AF);margin-top:8px">Adjust sensitivity to capture more or less of the background color. Click the image corners to pick background color.</p>
-  <div class="btn-group"><button class="btn btn-primary" id="brGo">âœ¨ Remove Background</button></div></div></div>
+  <div class="btn-group"><button class="btn btn-primary" id="brGo">Remove Background</button></div></div></div>
   <div id="brRes" style="display:none"><div class="tool-panel"><div class="tool-panel-title">Result</div>
   <div class="canvas-preview"><canvas id="brCanvas"></canvas></div>
-  <div class="btn-group" style="justify-content:center"><button class="btn btn-primary" id="brDL">â¬‡ Download PNG</button></div></div></div>`;
+  <div class="btn-group" style="justify-content:center"><button class="btn btn-primary" id="brDL">Download PNG</button></div></div></div>`;
   let img=null,bgColor=[255,255,255];
   setupDrop($('brDrop'),$('brFile'),async([f])=>{img=await loadImg(f);$('brOpt').style.display='block';});
   $('brThr').oninput=e=>$('brThrV').textContent=e.target.value;
@@ -321,7 +321,7 @@ R['bg-remover']=(c)=>{
   };
 };
 
-// â•â• IMAGE RESIZER â•â•
+//  IMAGE RESIZER 
 R['image-resizer']=(c)=>{
   c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Upload Image</div><div class="drop-zone" id="irDrop"><input type="file" id="irFile" accept="image/*"/><div class="drop-zone-text"><div style="font-size:32px;margin-bottom:12px;opacity:0.3">&#128208;</div><strong>Click to upload</strong> an image to resize<br><span style="font-size:12px;color:var(--on-surface-tertiary,#9CA3AF)">JPG, PNG, WebP, GIF supported</span></div></div>
   <div style="display:flex;align-items:center;gap:6px;margin-top:12px;font-size:12px;color:var(--on-surface-tertiary,#9CA3AF)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Image processed locally. Never uploaded.</div></div>
@@ -331,8 +331,8 @@ R['image-resizer']=(c)=>{
   <div class="tool-col"><label class="field-label">Height (px)</label><input type="number" class="field-input" id="irH" placeholder="600"/></div></div>
   <div style="margin-top:12px"><label class="check-label"><input type="checkbox" id="irLock" checked/> Maintain aspect ratio</label></div>
   <div style="margin-top:12px"><label class="field-label">Quick Presets</label><div class="toggle-group"><button class="toggle-opt" onclick="window._irP(1920,1080)">1920x1080</button><button class="toggle-opt" onclick="window._irP(1280,720)">1280x720</button><button class="toggle-opt" onclick="window._irP(800,600)">800x600</button><button class="toggle-opt" onclick="window._irP(500,500)">500x500</button><button class="toggle-opt" onclick="window._irP(256,256)">256x256</button></div></div>
-  <div class="btn-group"><button class="btn btn-primary" id="irGo">ðŸ“ Resize</button></div></div></div>
-  <div id="irRes" style="display:none"><div class="tool-panel"><div class="tool-panel-title">Resized Image</div><div class="stats-grid" id="irStats"></div><div style="text-align:center;margin-top:12px"><img id="irPrev" class="preview-img"/></div><div class="btn-group" style="justify-content:center"><button class="btn btn-primary" id="irDL">â¬‡ Download</button></div></div></div>`;
+  <div class="btn-group"><button class="btn btn-primary" id="irGo">Resize</button></div></div></div>
+  <div id="irRes" style="display:none"><div class="tool-panel"><div class="tool-panel-title">Resized Image</div><div class="stats-grid" id="irStats"></div><div style="text-align:center;margin-top:12px"><img id="irPrev" class="preview-img"/></div><div class="btn-group" style="justify-content:center"><button class="btn btn-primary" id="irDL">Download</button></div></div></div>`;
   let img=null,ar=1;
   setupDrop($('irDrop'),$('irFile'),async([f])=>{img=await loadImg(f);ar=img.width/img.height;$('irW').value=img.width;$('irH').value=img.height;$('irOrigInfo').textContent=`Original: ${img.width} x ${img.height}px (${fmtB(f.size)})`;$('irOpt').style.display='block';});
   $('irW').oninput=()=>{if($('irLock').checked&&img)$('irH').value=Math.round($('irW').value/ar);};
@@ -346,14 +346,14 @@ R['image-resizer']=(c)=>{
   };
 };
 
-// â•â• IMAGE FORMAT CONVERTER â•â•
+//  IMAGE FORMAT CONVERTER 
 R['image-converter']=(c)=>{
   c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Upload Image</div><div class="drop-zone" id="ifDrop"><input type="file" id="ifFile" accept="image/*"/><div class="drop-zone-text"><div style="font-size:32px;margin-bottom:12px;opacity:0.3">&#128260;</div><strong>Click to upload</strong> an image to convert<br><span style="font-size:12px;color:var(--on-surface-tertiary,#9CA3AF)">Convert between PNG, JPG, and WebP</span></div></div></div>
   <div id="ifOpt" style="display:none"><div class="tool-panel"><div class="tool-panel-title">Convert To</div>
   <div class="toggle-group" id="ifFmt"><button class="toggle-opt active" data-val="image/png" data-ext="png">PNG</button><button class="toggle-opt" data-val="image/jpeg" data-ext="jpg">JPG</button><button class="toggle-opt" data-val="image/webp" data-ext="webp">WebP</button></div>
   <div id="ifQWrap" style="margin-top:12px;display:none"><label class="field-label">Quality</label><div class="slider-wrap"><input type="range" id="ifQ" min="10" max="100" value="90"/><span class="slider-val" id="ifQV">90%</span></div></div>
-  <div class="btn-group"><button class="btn btn-primary" id="ifGo">ðŸ”„ Convert</button></div></div></div>
-  <div id="ifRes" style="display:none"><div class="tool-panel"><div class="tool-panel-title">Converted</div><div class="stats-grid" id="ifStats"></div><div class="btn-group" style="justify-content:center"><button class="btn btn-primary" id="ifDL">â¬‡ Download</button></div></div></div>`;
+  <div class="btn-group"><button class="btn btn-primary" id="ifGo">Convert</button></div></div></div>
+  <div id="ifRes" style="display:none"><div class="tool-panel"><div class="tool-panel-title">Converted</div><div class="stats-grid" id="ifStats"></div><div class="btn-group" style="justify-content:center"><button class="btn btn-primary" id="ifDL">Download</button></div></div></div>`;
   let img=null,origSize=0,fmt='image/png',ext='png';
   setupDrop($('ifDrop'),$('ifFile'),async([f])=>{img=await loadImg(f);origSize=f.size;$('ifOpt').style.display='block';});
   document.querySelectorAll('#ifFmt .toggle-opt').forEach(b=>b.onclick=()=>{document.querySelectorAll('#ifFmt .toggle-opt').forEach(x=>x.classList.remove('active'));b.classList.add('active');fmt=b.dataset.val;ext=b.dataset.ext;$('ifQWrap').style.display=fmt!=='image/png'?'block':'none';});
@@ -367,14 +367,14 @@ R['image-converter']=(c)=>{
   };
 };
 
-// â•â• WORD COUNTER â•â•
+//  WORD COUNTER 
 R['word-counter']=(c)=>{
   c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Enter Text</div><textarea class="field-input" id="wcIn" rows="8" placeholder="Start typing or paste text..."></textarea></div>
   <div class="tool-panel"><div class="tool-panel-title">Statistics</div><div class="stats-grid"><div class="stat-card"><div class="stat-val" id="wcW">0</div><div class="stat-label">Words</div></div><div class="stat-card"><div class="stat-val" id="wcC">0</div><div class="stat-label">Characters</div></div><div class="stat-card"><div class="stat-val" id="wcS">0</div><div class="stat-label">Sentences</div></div><div class="stat-card"><div class="stat-val" id="wcP">0</div><div class="stat-label">Paragraphs</div></div><div class="stat-card"><div class="stat-val" id="wcR">0m</div><div class="stat-label">Read Time</div></div><div class="stat-card"><div class="stat-val" id="wcSp">0m</div><div class="stat-label">Speak Time</div></div></div></div>`;
   $('wcIn').oninput=()=>{const t=$('wcIn').value,tr=t.trim(),w=tr?tr.split(/\s+/).length:0;$('wcW').textContent=w;$('wcC').textContent=t.length;$('wcS').textContent=tr?(tr.match(/[.!?]+/g)||[]).length||(w?1:0):0;$('wcP').textContent=tr?tr.split(/\n\s*\n/).filter(p=>p.trim()).length||(w?1:0):0;$('wcR').textContent=Math.ceil(w/230)+'m';$('wcSp').textContent=Math.ceil(w/150)+'m';};
 };
 
-// â•â• TEXT CASE CONVERTER â•â•
+//  TEXT CASE CONVERTER 
 R['case-converter']=(c)=>{
   c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Enter Text</div><textarea class="field-input" id="ccIn" rows="6" placeholder="Paste your text here to convert..."></textarea></div>
   <div class="tool-panel"><div class="tool-panel-title">Convert To</div>
@@ -406,12 +406,12 @@ R['case-converter']=(c)=>{
   };
 };
 
-// â•â• DIFF CHECKER â•â•
+//  DIFF CHECKER 
 R['diff-checker']=(c)=>{
   c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Compare Two Texts</div>
   <div class="diff-container"><div><label class="field-label">Original Text</label><textarea class="field-input" id="dcA" rows="10" placeholder="Paste original text here..."></textarea></div>
   <div><label class="field-label">Modified Text</label><textarea class="field-input" id="dcB" rows="10" placeholder="Paste modified text here..."></textarea></div></div>
-  <div class="btn-group"><button class="btn btn-primary" onclick="window._diff()">ðŸ” Compare</button><button class="btn btn-secondary" onclick="$('dcA').value='';$('dcB').value=''">Clear</button></div></div>
+  <div class="btn-group"><button class="btn btn-primary" onclick="window._diff()">Compare</button><button class="btn btn-secondary" onclick="$('dcA').value='';$('dcB').value=''">Clear</button></div></div>
   <div id="dcRes" style="display:none"><div class="tool-panel"><div class="tool-panel-title">Differences</div><div class="stats-grid" id="dcStats" style="margin-bottom:16px"></div><div class="diff-output" id="dcOut"></div></div></div>`;
   window._diff=()=>{
     const a=$('dcA').value.split('\n'),b=$('dcB').value.split('\n');
@@ -430,11 +430,11 @@ R['diff-checker']=(c)=>{
 };
 function escH(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
-// â•â• LOREM IPSUM â•â•
+//  LOREM IPSUM 
 R['lorem-ipsum']=(c)=>{
   const W='lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt mollit anim id est laborum'.split(' ');
   c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Options</div><div class="tool-row"><div class="tool-col"><label class="field-label">Type</label><div class="toggle-group" id="liT"><button class="toggle-opt active" data-val="p">Paragraphs</button><button class="toggle-opt" data-val="s">Sentences</button><button class="toggle-opt" data-val="w">Words</button></div></div><div class="tool-col" style="max-width:140px"><label class="field-label">Count</label><input type="number" class="field-input" id="liN" value="3" min="1" max="100"/></div></div>
-  <div class="btn-group"><button class="btn btn-primary" onclick="window._li()">ðŸ“„ Generate</button></div></div>
+  <div class="btn-group"><button class="btn btn-primary" onclick="window._li()">Generate</button></div></div>
   <div class="tool-panel" id="liRes" style="display:none"><div class="tool-panel-title">Result</div><div style="position:relative"><div class="output-area" id="liOut" style="font-family:inherit;font-size:14px;line-height:1.8"></div><button class="copy-btn" onclick="copyText($('liOut').textContent)">Copy</button></div></div>`;
   let u='p';document.querySelectorAll('#liT .toggle-opt').forEach(b=>b.onclick=()=>{document.querySelectorAll('#liT .toggle-opt').forEach(x=>x.classList.remove('active'));b.classList.add('active');u=b.dataset.val;});
   const rw=()=>W[Math.floor(Math.random()*W.length)];
@@ -447,54 +447,54 @@ R['lorem-ipsum']=(c)=>{
     $('liOut').textContent=r;$('liRes').style.display='block';};
 };
 
-// â•â• JSON FORMATTER â•â•
+//  JSON FORMATTER 
 R['json-formatter']=(c)=>{
   c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Input JSON</div><textarea class="field-input" id="jfIn" rows="8" placeholder='{"name":"John","age":30}'></textarea>
-  <div class="btn-group"><button class="btn btn-primary" onclick="window._jf('fmt')">âœ¨ Format</button><button class="btn btn-secondary" onclick="window._jf('min')">ðŸ“¦ Minify</button><button class="btn btn-secondary" onclick="window._jf('val')">âœ… Validate</button></div></div>
+  <div class="btn-group"><button class="btn btn-primary" onclick="window._jf('fmt')">Format</button><button class="btn btn-secondary" onclick="window._jf('min')">Minify</button><button class="btn btn-secondary" onclick="window._jf('val')">Validate</button></div></div>
   <div class="tool-panel" id="jfRes" style="display:none"><div class="tool-panel-title">Output</div><div style="position:relative"><div class="output-area" id="jfOut"></div><button class="copy-btn" onclick="copyText($('jfOut').textContent)">Copy</button></div><div id="jfSt" style="margin-top:8px;font-size:13px;font-family:monospace"></div></div>`;
-  window._jf=(m)=>{try{const p=JSON.parse($('jfIn').value);$('jfOut').textContent=m==='min'?JSON.stringify(p):JSON.stringify(p,null,2);$('jfSt').innerHTML=`<span style="color:#059669">âœ“ Valid JSON${m==='fmt'?' (Formatted)':m==='min'?' (Minified)':''}</span>`;$('jfRes').style.display='block';}catch(e){$('jfOut').textContent='';$('jfSt').innerHTML=`<span style="color:#E11D48">âœ— ${e.message}</span>`;$('jfRes').style.display='block';}};
+  window._jf=(m)=>{try{const p=JSON.parse($('jfIn').value);$('jfOut').textContent=m==='min'?JSON.stringify(p):JSON.stringify(p,null,2);$('jfSt').innerHTML=`<span style="color:#059669"> Valid JSON${m==='fmt'?' (Formatted)':m==='min'?' (Minified)':''}</span>`;$('jfRes').style.display='block';}catch(e){$('jfOut').textContent='';$('jfSt').innerHTML=`<span style="color:#E11D48"> ${e.message}</span>`;$('jfRes').style.display='block';}};
 };
 
-// â•â• BASE64 â•â•
+//  BASE64 
 R['base64']=(c)=>{
   c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Mode</div><div class="toggle-group" id="b6M"><button class="toggle-opt active" data-m="e">Encode</button><button class="toggle-opt" data-m="d">Decode</button></div></div>
   <div class="tool-panel"><div class="tool-panel-title" id="b6IL">Text Input</div><textarea class="field-input" id="b6In" rows="5" placeholder="Enter text to encode..."></textarea>
-  <div class="btn-group"><button class="btn btn-primary" onclick="window._b6()">ðŸ”„ Convert</button></div></div>
+  <div class="btn-group"><button class="btn btn-primary" onclick="window._b6()">Convert</button></div></div>
   <div class="tool-panel" id="b6Res" style="display:none"><div class="tool-panel-title" id="b6OL">Base64 Output</div><div style="position:relative"><div class="output-area" id="b6Out"></div><button class="copy-btn" onclick="copyText($('b6Out').textContent)">Copy</button></div></div>`;
   let m='e';document.querySelectorAll('#b6M .toggle-opt').forEach(b=>b.onclick=()=>{document.querySelectorAll('#b6M .toggle-opt').forEach(x=>x.classList.remove('active'));b.classList.add('active');m=b.dataset.m;$('b6IL').textContent=m==='e'?'Text Input':'Base64 Input';$('b6OL').textContent=m==='e'?'Base64 Output':'Text Output';});
   window._b6=()=>{const v=$('b6In').value;if(!v.trim())return toast('Enter content');try{$('b6Out').textContent=m==='e'?btoa(unescape(encodeURIComponent(v))):decodeURIComponent(escape(atob(v)));$('b6Res').style.display='block';}catch(e){toast('Invalid input');}};
 };
 
-// â•â• QR CODE â•â•
+//  QR CODE 
 R['qr-generator']=(c)=>{
   c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Content</div><textarea class="field-input" id="qrIn" rows="3" placeholder="Enter URL or text...">https://</textarea>
   <div style="margin-top:12px"><label class="field-label">Size</label><div class="slider-wrap"><input type="range" id="qrSz" min="150" max="500" value="300"/><span class="slider-val" id="qrSzV">300</span></div></div>
   <div class="btn-group"><button class="btn btn-primary" onclick="window._qr()">Generate QR Code</button></div></div>
-  <div id="qrRes" style="display:none"><div class="tool-panel"><div class="tool-panel-title">QR Code</div><div class="qr-output"><canvas id="qrCv"></canvas><div class="btn-group"><button class="btn btn-primary" onclick="$('qrCv').toBlob(b=>dlBlob(b,'qrcode.png'))">â¬‡ Download</button></div></div></div></div>`;
+  <div id="qrRes" style="display:none"><div class="tool-panel"><div class="tool-panel-title">QR Code</div><div class="qr-output"><canvas id="qrCv"></canvas><div class="btn-group"><button class="btn btn-primary" onclick="$('qrCv').toBlob(b=>dlBlob(b,'qrcode.png'))">Download</button></div></div></div></div>`;
   $('qrSz').oninput=e=>$('qrSzV').textContent=e.target.value;
   window._qr=()=>{const t=$('qrIn').value.trim();if(!t)return toast('Enter content');const s=+$('qrSz').value,cv=$('qrCv');cv.width=s;cv.height=s;drawQR(cv.getContext('2d'),t,s);$('qrRes').style.display='block';};
 };
 function drawQR(ctx,data,size){const m=25,cs=size/m;ctx.fillStyle='#fff';ctx.fillRect(0,0,size,size);ctx.fillStyle='#0c0d10';const df=(x,y)=>{for(let r=0;r<7;r++)for(let c=0;c<7;c++){if(r===0||r===6||c===0||c===6||(r>=2&&r<=4&&c>=2&&c<=4))ctx.fillRect((x+c)*cs,(y+r)*cs,cs,cs);}};df(0,0);df(m-7,0);df(0,m-7);for(let i=8;i<m-8;i++)if(i%2===0){ctx.fillRect(i*cs,6*cs,cs,cs);ctx.fillRect(6*cs,i*cs,cs,cs);}const bits=[];for(let i=0;i<data.length;i++){const b=data.charCodeAt(i);for(let j=7;j>=0;j--)bits.push((b>>j)&1);}let h=0;for(let i=0;i<data.length;i++)h=((h<<5)-h+data.charCodeAt(i))|0;const rng=s=>(s*1103515245+12345)&0x7fffffff;let seed=Math.abs(h);while(bits.length<m*m){seed=rng(seed);bits.push(seed%2);}let bi=0;for(let r=0;r<m;r++)for(let c=0;c<m;c++){if((r<8&&c<8)||(r<8&&c>=m-8)||(r>=m-8&&c<8)||r===6||c===6)continue;if(bits[bi++])ctx.fillRect(c*cs,r*cs,cs,cs);}}
 
-// â•â• PASSWORD GEN â•â•
+//  PASSWORD GEN 
 R['password-gen']=(c)=>{
   c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Settings</div><label class="field-label">Length</label><div class="slider-wrap"><input type="range" id="pwL" min="4" max="128" value="20"/><span class="slider-val" id="pwLV">20</span></div>
   <div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:16px"><label class="check-label"><input type="checkbox" id="pwU" checked/> A-Z</label><label class="check-label"><input type="checkbox" id="pwLo" checked/> a-z</label><label class="check-label"><input type="checkbox" id="pwD" checked/> 0-9</label><label class="check-label"><input type="checkbox" id="pwS" checked/> !@#$</label></div>
-  <div class="btn-group"><button class="btn btn-primary" onclick="window._pw()">ðŸ”‘ Generate</button></div></div>
+  <div class="btn-group"><button class="btn btn-primary" onclick="window._pw()">Generate</button></div></div>
   <div class="tool-panel" id="pwRes" style="display:none"><div class="tool-panel-title">Password</div><div class="output-area" id="pwOut" style="font-size:18px;letter-spacing:2px;text-align:center;padding:24px;word-break:break-all"></div><div class="strength-bar"><div class="strength-bar-fill" id="pwBar"></div></div><div class="strength-text" id="pwStr"></div>
-  <div class="btn-group" style="justify-content:center"><button class="btn btn-secondary btn-sm" onclick="copyText($('pwOut').textContent)">ðŸ“‹ Copy</button><button class="btn btn-secondary btn-sm" onclick="window._pw()">ðŸ”„ Regenerate</button></div></div>`;
+  <div class="btn-group" style="justify-content:center"><button class="btn btn-secondary btn-sm" onclick="copyText($('pwOut').textContent)">Copy</button><button class="btn btn-secondary btn-sm" onclick="window._pw()">Regenerate</button></div></div>`;
   $('pwL').oninput=e=>$('pwLV').textContent=e.target.value;
   window._pw=()=>{let ch='';if($('pwU').checked)ch+='ABCDEFGHIJKLMNOPQRSTUVWXYZ';if($('pwLo').checked)ch+='abcdefghijklmnopqrstuvwxyz';if($('pwD').checked)ch+='0123456789';if($('pwS').checked)ch+='!@#$%^&*()_+-=[]{}|;:,.<>?';if(!ch)return toast('Select character types');
     const l=+$('pwL').value,a=new Uint32Array(l);crypto.getRandomValues(a);let p='';for(let i=0;i<l;i++)p+=ch[a[i]%ch.length];
     $('pwOut').textContent=p;$('pwRes').style.display='block';
     const ent=Math.log2(ch.length)*l;let s,col,pct;if(ent<30){s='Very Weak';col='#ef4444';pct=15;}else if(ent<50){s='Weak';col='#f97316';pct=35;}else if(ent<70){s='Moderate';col='#fbbf24';pct=55;}else if(ent<100){s='Strong';col='#4ade80';pct=80;}else{s='Very Strong';col='#4ade80';pct=100;}
-    $('pwBar').style.width=pct+'%';$('pwBar').style.background=col;$('pwStr').textContent=`${s} Â· ${ent.toFixed(0)} bits`;$('pwStr').style.color=col;};
+    $('pwBar').style.width=pct+'%';$('pwBar').style.background=col;$('pwStr').textContent=`${s}  ${ent.toFixed(0)} bits`;$('pwStr').style.color=col;};
 };
 
-// â•â• COLOR PALETTE â•â•
+//  COLOR PALETTE 
 R['color-palette']=(c)=>{
   c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Palette</div><div class="palette-display" id="palD"></div><div id="palH" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px"></div>
-  <div class="btn-group"><button class="btn btn-primary" onclick="window._pal()">ðŸŽ² Random</button><button class="btn btn-secondary" onclick="window._pal('warm')">ðŸ”¥ Warm</button><button class="btn btn-secondary" onclick="window._pal('cool')">â„ï¸ Cool</button><button class="btn btn-secondary" onclick="window._pal('pastel')">ðŸŒ¸ Pastel</button><button class="btn btn-secondary" onclick="window._pal('mono')">â¬› Mono</button></div></div>
+  <div class="btn-group"><button class="btn btn-primary" onclick="window._pal()"> Random</button><button class="btn btn-secondary" onclick="window._pal('warm')"> Warm</button><button class="btn btn-secondary" onclick="window._pal('cool')"> Cool</button><button class="btn btn-secondary" onclick="window._pal('pastel')"> Pastel</button><button class="btn btn-secondary" onclick="window._pal('mono')"> Mono</button></div></div>
   <div class="tool-panel"><div class="tool-panel-title">Export</div><div class="btn-group" style="margin-top:0"><button class="btn btn-secondary btn-sm" onclick="copyText(':root {\\n'+window._palC.map((c,i)=>'  --color-'+(i+1)+': '+c+';').join('\\n')+'\\n}')">Copy CSS</button><button class="btn btn-secondary btn-sm" onclick="copyText(JSON.stringify(window._palC))">Copy Array</button></div></div>`;
   window._palC=[];
   function h2h(h,s,l){s/=100;l/=100;const a=s*Math.min(l,1-l);const f=n=>{const k=(n+h/30)%12;const c=l-a*Math.max(Math.min(k-3,9-k,1),-1);return Math.round(255*c).toString(16).padStart(2,'0');};return`#${f(0)}${f(8)}${f(4)}`;}
@@ -503,5 +503,5 @@ R['color-palette']=(c)=>{
   window._pal();
 };
 
-// â”€â”€ INIT â”€â”€
+//  INIT 
 renderGrid();
