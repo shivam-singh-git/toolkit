@@ -163,7 +163,7 @@ R['compress-pdf']=(c)=>{
 R['merge-pdf']=(c)=>{
   let files=[];
   c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Upload PDF Files</div>
-    <div class="drop-zone" id="mDrop"><input type="file" id="mFile" accept=".pdf" multiple/><div class="drop-zone-text"><strong>Click to upload</strong> or drag & drop<br><span style="font-size:12px;color:var(--on-surface-tertiary,#9CA3AF)">Select multiple PDF files</span></div></div>
+    <div class="drop-zone" id="mDrop"><input type="file" id="mFile" accept=".pdf" multiple/><div class="drop-zone-text"><div style="font-size:32px;margin-bottom:12px;opacity:0.3">&#128209;</div><strong>Click to upload</strong> or drag & drop<br><span style="font-size:12px;color:var(--on-surface-tertiary,#9CA3AF)">Select multiple PDF files to merge</span></div></div>
     <ul class="file-list" id="mList"></ul>
     <div class="btn-group"><button class="btn btn-primary" id="mBtn" disabled>ðŸ“‘ Merge PDFs</button><button class="btn btn-secondary" id="mClr" style="display:none">Clear All</button></div>
   </div><div id="mRes" style="display:none"><div class="tool-panel"><div class="tool-panel-title">Merged PDF</div><div class="stats-grid" id="mStats"></div><div class="btn-group" style="justify-content:center"><button class="btn btn-primary" id="mDL">â¬‡ Download</button></div></div></div>`;
@@ -264,7 +264,7 @@ R['text-to-pdf']=(c)=>{
 
 // â•â• IMAGE COMPRESSOR â•â•
 R['image-compressor']=(c)=>{
-  c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Upload Image</div><div class="drop-zone" id="icDrop"><input type="file" id="icFile" accept="image/*"/><div class="drop-zone-text"><strong>Click to upload</strong> or drag & drop</div></div></div>
+  c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Upload Image</div><div class="drop-zone" id="icDrop"><input type="file" id="icFile" accept="image/*"/><div class="drop-zone-text"><div style="font-size:32px;margin-bottom:12px;opacity:0.3">&#128247;</div><strong>Click to upload</strong> or drag & drop<br><span style="font-size:12px;color:var(--on-surface-tertiary,#9CA3AF)">JPG, PNG, WebP supported</span></div></div></div>
   <div class="tool-panel"><div class="tool-panel-title">Quality</div><div class="slider-wrap"><input type="range" id="icQ" min="10" max="100" value="70"/><span class="slider-val" id="icQV">70%</span></div>
   <div style="margin-top:12px"><label class="field-label">Format</label><div class="toggle-group" id="icFmt"><button class="toggle-opt active" data-val="image/jpeg">JPEG</button><button class="toggle-opt" data-val="image/webp">WebP</button><button class="toggle-opt" data-val="image/png">PNG</button></div></div></div>
   <div id="icRes" style="display:none"><div class="tool-panel"><div class="tool-panel-title">Result</div><div class="stats-grid" id="icStats"></div><div style="text-align:center;margin-top:16px"><img id="icPrev" class="preview-img"/></div><div class="btn-group" style="justify-content:center"><button class="btn btn-primary" id="icDL">â¬‡ Download</button></div></div></div>`;
@@ -279,7 +279,7 @@ R['image-compressor']=(c)=>{
 
 // â•â• BACKGROUND REMOVER â•â•
 R['bg-remover']=(c)=>{
-  c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Upload Image</div><div class="drop-zone" id="brDrop"><input type="file" id="brFile" accept="image/*"/><div class="drop-zone-text"><strong>Click to upload</strong> an image<br><span style="font-size:12px;color:var(--on-surface-tertiary,#9CA3AF)">Works best with solid/simple backgrounds</span></div></div></div>
+  c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Upload Image</div><div class="drop-zone" id="brDrop"><input type="file" id="brFile" accept="image/*"/><div class="drop-zone-text"><div style="font-size:32px;margin-bottom:12px;opacity:0.3">&#10024;</div><strong>Click to upload</strong> an image<br><span style="font-size:12px;color:var(--on-surface-tertiary,#9CA3AF)">Works best with solid or simple backgrounds</span></div></div></div>
   <div id="brOpt" style="display:none"><div class="tool-panel"><div class="tool-panel-title">Sensitivity</div>
   <div class="slider-wrap"><span style="font-size:12px;color:var(--on-surface-tertiary,#9CA3AF)">Tight</span><input type="range" id="brThr" min="10" max="120" value="50"/><span style="font-size:12px;color:var(--on-surface-tertiary,#9CA3AF)">Wide</span><span class="slider-val" id="brThrV">50</span></div>
   <p style="font-size:12px;color:var(--on-surface-tertiary,#9CA3AF);margin-top:8px">Adjust sensitivity to capture more or less of the background color. Click the image corners to pick background color.</p>
@@ -333,7 +333,7 @@ R['image-resizer']=(c)=>{
 
 // â•â• IMAGE FORMAT CONVERTER â•â•
 R['image-converter']=(c)=>{
-  c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Upload Image</div><div class="drop-zone" id="ifDrop"><input type="file" id="ifFile" accept="image/*"/><div class="drop-zone-text"><strong>Click to upload</strong> an image to convert</div></div></div>
+  c.innerHTML=`<div class="tool-panel"><div class="tool-panel-title">Upload Image</div><div class="drop-zone" id="ifDrop"><input type="file" id="ifFile" accept="image/*"/><div class="drop-zone-text"><div style="font-size:32px;margin-bottom:12px;opacity:0.3">&#128260;</div><strong>Click to upload</strong> an image to convert<br><span style="font-size:12px;color:var(--on-surface-tertiary,#9CA3AF)">Convert between PNG, JPG, and WebP</span></div></div></div>
   <div id="ifOpt" style="display:none"><div class="tool-panel"><div class="tool-panel-title">Convert To</div>
   <div class="toggle-group" id="ifFmt"><button class="toggle-opt active" data-val="image/png" data-ext="png">PNG</button><button class="toggle-opt" data-val="image/jpeg" data-ext="jpg">JPG</button><button class="toggle-opt" data-val="image/webp" data-ext="webp">WebP</button></div>
   <div id="ifQWrap" style="margin-top:12px;display:none"><label class="field-label">Quality</label><div class="slider-wrap"><input type="range" id="ifQ" min="10" max="100" value="90"/><span class="slider-val" id="ifQV">90%</span></div></div>
