@@ -63,8 +63,8 @@ function goHome(){currentTool=null;currentFilter=null;$('homepage').classList.ad
 function showCategory(cat){currentFilter=cat;$('homepage').classList.add('active');$('toolView').classList.remove('active');updatePills();renderGrid();$('toolsGrid').scrollIntoView({behavior:'smooth',block:'start'});closeMenu();}
 function updatePills(){document.querySelectorAll('.cat-pill').forEach((b,i)=>{const cats=[null,'pdf','image','text','dev','generators'];b.classList.toggle('active',cats[i]===currentFilter);});}
 function openTool(id){const t=TOOLS.find(x=>x.id===id);if(!t)return;currentTool=t;$('homepage').classList.remove('active');$('toolView').classList.add('active');$('toolTitle').textContent=t.name;$('toolDesc').textContent=t.desc;const body=$('toolBody');body.innerHTML='';R[id](body);window.scrollTo({top:0,behavior:'smooth'});document.title=t.name+' | Free Online Tool | ToolKit';closeMenu();}
-function toggleMenu(){$('navLinks').classList.toggle('open');}
-function closeMenu(){$('navLinks').classList.remove('open');}
+function toggleMenu(){var el=$('navLinks');if(el)el.classList.toggle('open');}
+function closeMenu(){var el=$('navLinks');if(el)el.classList.remove('open');}
 function $(id){return document.getElementById(id);}
 
 function renderGrid(){
